@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Влюбленный Дьявол — Коллекция</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0d0d0d;
+            --accent-pink: #ff007f;
+            --accent-glow: rgba(255, 0, 127, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --border-color: #1a1a1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'JetBrains Mono', monospace;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1px);
+            background-size: 28px 28px;
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            animation: pixel-drift 70s linear infinite;
+        }
+
+        /* Эффект шума на фоне */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-txt {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-pink);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-pink);
+        }
+
+        .btn-buy-drop {
+            background-color: var(--accent-pink);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-buy-drop::before,
+        .btn-buy-drop::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            opacity: 0;
+            will-change: transform, clip-path;
+        }
+
+        .btn-buy-drop:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            box-shadow: 0 0 22px rgba(255, 0, 127, 0.7), 0 0 60px rgba(255, 0, 127, 0.35), inset 0 0 0 1px rgba(255, 0, 127, 0.6);
+            transition: background-color 0.05s linear, color 0.05s linear, box-shadow 0.25s ease;
+            animation: glitch-jitter 0.35s steps(2, end) infinite;
+        }
+
+        .btn-buy-drop:hover::before {
+            opacity: 1;
+            color: #ff1744;
+            animation: glitch-slice-1 0.5s steps(1, end) infinite;
+        }
+
+        .btn-buy-drop:hover::after {
+            opacity: 1;
+            color: #00ff87;
+            animation: glitch-slice-2 0.5s steps(1, end) infinite;
+        }
+
+        .btn-buy-drop:active {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+            animation: none;
+            transform: scale(0.97);
+        }
+
+        .btn-buy-drop:active::before,
+        .btn-buy-drop:active::after {
+            opacity: 0;
+            animation: none;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(255, 0, 127, 0.08) 0%, transparent 60%);
+        }
+
+        .hero-banner {
+            max-width: 450px;
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero p {
+            max-width: 500px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-sec {
+            background: transparent;
+            border: 1px solid var(--accent-pink);
+            color: var(--accent-pink);
+            padding: 12px 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .btn-sec:hover {
+            background: var(--accent-pink);
+            color: #ffffff;
+            border-color: #ff3d9a;
+            box-shadow: 0 0 15px var(--accent-glow), 0 0 40px rgba(255, 0, 127, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.25);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .btn-sec:active {
+            transform: scale(0.97);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .drop-info-line {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .drop-info-line span strong {
+            color: var(--accent-pink);
+        }
+
+        /* CATALOG */
+        .catalog-section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .section-main-heading {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .carousel-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .carousel-arrow {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            background: rgba(13, 13, 13, 0.7);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, border-color 0.3s;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+
+        .carousel-arrow:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+            animation: glitch-jitter 0.35s steps(2, end) infinite;
+        }
+
+        .carousel-arrow:active {
+            transform: scale(0.92);
+            animation: none;
+        }
+
+        .products-grid {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 4px 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+
+        .products-grid:active {
+            cursor: grabbing;
+        }
+
+        .products-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            flex: 0 0 340px;
+            max-width: 85vw;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: border-color 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: rgba(255, 0, 127, 0.3);
+        }
+
+        .badge-limited {
+            position: absolute;
+            top: 30px; left: 30px;
+            background: rgba(255, 0, 127, 0.15);
+            border: 1px solid var(--accent-pink);
+            color: var(--accent-pink);
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        .img-container {
+            width: 100%;
+            aspect-ratio: 0.95;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .img-back {
+            opacity: 0;
+        }
+
+        /* Hover Switch эффект для ПК */
+        @media (hover: hover) {
+            .product-card:hover .img-back {
+                opacity: 1;
+            }
+            .product-card:hover .img-front {
+                opacity: 0;
+            }
+        }
+
+        /* Переключатели ракурса (для мобилок и дублирования на ПК) */
+        .view-switchers {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .sw-btn {
+            background: #161616;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .sw-btn.active, .sw-btn:hover {
+            border-color: var(--accent-pink);
+            color: var(--text-main);
+            background: rgba(255, 0, 127, 0.1);
+        }
+
+        .prod-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .prod-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            min-height: 45px;
+        }
+
+        .prod-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .size-note {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            line-height: 1.55;
+            margin-bottom: 16px;
+            padding-left: 10px;
+            border-left: 2px solid var(--accent-pink);
+        }
+
+        .btn-buy-prod {
+            width: 100%;
+            background: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .btn-buy-prod::before,
+        .btn-buy-prod::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            opacity: 0;
+            will-change: transform, clip-path;
+        }
+
+        .btn-buy-prod:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            box-shadow: 0 0 22px rgba(255, 0, 127, 0.7), 0 0 60px rgba(255, 0, 127, 0.35), inset 0 0 0 1px rgba(255, 0, 127, 0.6);
+            transition: background-color 0.05s linear, color 0.05s linear, box-shadow 0.25s ease;
+            animation: glitch-jitter 0.35s steps(2, end) infinite;
+        }
+
+        .btn-buy-prod:hover::before {
+            opacity: 1;
+            color: #ff1744;
+            animation: glitch-slice-1 0.5s steps(1, end) infinite;
+        }
+
+        .btn-buy-prod:hover::after {
+            opacity: 1;
+            color: #00ff87;
+            animation: glitch-slice-2 0.5s steps(1, end) infinite;
+        }
+
+        .btn-buy-prod:active {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+            animation: none;
+            transform: scale(0.98);
+        }
+
+        .btn-buy-prod:active::before,
+        .btn-buy-prod:active::after {
+            opacity: 0;
+            animation: none;
+        }
+
+        /* SIZE GUIDE MODAL */
+        .size-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            padding: 20px;
+        }
+
+        .size-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .size-modal {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 560px;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 35px 30px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .size-overlay.active .size-modal {
+            transform: scale(1);
+        }
+
+        .size-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        .size-close:hover {
+            color: var(--accent-pink);
+            text-shadow: 0 0 10px var(--accent-glow);
+            transform: rotate(90deg);
+        }
+
+        .size-modal h2 {
+            font-size: 1.8rem;
+            color: var(--accent-pink);
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+
+        .size-modal-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .fit-alert {
+            background: rgba(255, 0, 127, 0.05);
+            border-left: 3px solid var(--accent-pink);
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #eee;
+            margin-bottom: 20px;
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .size-table th {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .size-table td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #111;
+            font-size: 0.9rem;
+        }
+
+        .size-table tr:hover td {
+            color: var(--accent-pink);
+            background: rgba(255,255,255,0.01);
+        }
+
+        /* PREORDER MODAL */
+        .preorder-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            padding: 20px;
+        }
+
+        .preorder-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .preorder-modal {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 720px;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 35px 30px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .preorder-overlay.active .preorder-modal {
+            transform: scale(1);
+        }
+
+        .preorder-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        .preorder-close:hover {
+            color: var(--accent-pink);
+            text-shadow: 0 0 10px var(--accent-glow);
+            transform: rotate(90deg);
+        }
+
+        .preorder-modal h2 {
+            font-size: 1.7rem;
+            color: var(--accent-pink);
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+
+        .preorder-track-wrap {
+            overflow: hidden;
+            margin: 20px 0 26px;
+        }
+
+        .preorder-track {
+            display: inline-flex;
+            animation: preorder-marquee 45s linear infinite;
+            will-change: transform;
+        }
+
+        .preorder-track:hover {
+            animation-play-state: paused;
+        }
+
+        .preorder-group {
+            display: inline-flex;
+            gap: 16px;
+        }
+
+        @keyframes preorder-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .preview-card {
+            flex: 0 0 160px;
+            background: #111;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-img {
+            width: 100%;
+            aspect-ratio: 0.85;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+
+        .preview-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .preorder-cta {
+            width: 100%;
+            background: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .preorder-cta:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            box-shadow: 0 0 22px rgba(255, 0, 127, 0.7), 0 0 60px rgba(255, 0, 127, 0.35), inset 0 0 0 1px rgba(255, 0, 127, 0.6);
+            transition: background-color 0.05s linear, color 0.05s linear, box-shadow 0.25s ease;
+            animation: glitch-jitter 0.35s steps(2, end) infinite;
+        }
+
+        .preorder-cta:active {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            animation: none;
+            transform: scale(0.98);
+        }
+
+        /* MODAL POPUP */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 35px 30px;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.4s ease;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-pink);
+        }
+
+        .modal-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .order-summary-box {
+            background: #111;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            border-left: 2px solid var(--accent-pink);
+            color: #eee;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        .form-field > label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            background: #121212;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 12px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-field input:focus, .form-field select:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+        }
+
+        .btn-submit-order {
+            width: 100%;
+            background: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit-order::before,
+        .btn-submit-order::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            opacity: 0;
+            will-change: transform, clip-path;
+        }
+
+        .btn-submit-order:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            box-shadow: 0 0 22px rgba(255, 0, 127, 0.7), 0 0 60px rgba(255, 0, 127, 0.35), inset 0 0 0 1px rgba(255, 0, 127, 0.6);
+            transition: background-color 0.05s linear, color 0.05s linear, box-shadow 0.25s ease;
+            animation: glitch-jitter 0.35s steps(2, end) infinite;
+        }
+
+        .btn-submit-order:hover::before {
+            opacity: 1;
+            color: #ff1744;
+            animation: glitch-slice-1 0.5s steps(1, end) infinite;
+        }
+
+        .btn-submit-order:hover::after {
+            opacity: 1;
+            color: #00ff87;
+            animation: glitch-slice-2 0.5s steps(1, end) infinite;
+        }
+
+        .btn-submit-order:active {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+            animation: none;
+            transform: scale(0.98);
+        }
+
+        .btn-submit-order:active::before,
+        .btn-submit-order:active::after {
+            opacity: 0;
+            animation: none;
+        }
+
+        /* STATUS NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: #111;
+            border: 1px solid var(--border-color);
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            transform: translateY(150px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .toast.active {
+            transform: translateY(0);
+        }
+
+        .toast-icon {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+
+        .toast.success .toast-icon { background: #00e676; box-shadow: 0 0 10px #00e676; }
+        .toast.error .toast-icon { background: #ff1744; box-shadow: 0 0 10px #ff1744; }
+
+        /* HEADER ACTIONS / CART BUTTON */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-btn {
+            position: relative;
+            background: #111;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cart-btn:hover {
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -7px; right: -7px;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 5px;
+            background: var(--accent-pink);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* CART SIDEBAR */
+        .cart-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            z-index: 900;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0; right: 0;
+            width: 380px;
+            max-width: 92vw;
+            height: 100%;
+            background: #0b0b0b;
+            border-left: 1px solid var(--border-color);
+            z-index: 950;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .cart-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .cart-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-head h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: var(--accent-pink);
+        }
+
+        .cart-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .cart-close:hover {
+            color: var(--accent-pink);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 60px 20px;
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            background: #111;
+            border: 1px solid var(--border-color);
+            padding: 14px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .cart-item-meta {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+
+        .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 26px;
+            height: 26px;
+            background: #161616;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .qty-btn:hover {
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+        }
+
+        .qty-val {
+            min-width: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .cart-item-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--accent-pink);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .cart-remove {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+            padding: 2px;
+        }
+
+        .cart-remove:hover {
+            color: #ff1744;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border-color);
+            padding: 20px 24px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .cart-total span {
+            color: var(--text-main);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: var(--accent-pink);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-checkout:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            box-shadow: 0 0 22px rgba(255, 0, 127, 0.7), 0 0 60px rgba(255, 0, 127, 0.35), inset 0 0 0 1px rgba(255, 0, 127, 0.6);
+            transition: background-color 0.05s linear, color 0.05s linear, box-shadow 0.25s ease;
+            animation: glitch-jitter 0.35s steps(2, end) infinite;
+        }
+
+        .btn-checkout:active {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            animation: none;
+            transform: scale(0.98);
+        }
+
+        /* PAYMENT OPTIONS */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pay-option {
+            display: block;
+            cursor: pointer;
+        }
+
+        .pay-option input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .pay-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #121212;
+            border: 1px solid var(--border-color);
+            padding: 14px 16px;
+            transition: all 0.25s;
+        }
+
+        .pay-logo {
+            flex-shrink: 0;
+            min-width: 56px;
+            height: 36px;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            border: 1px solid var(--border-color);
+            font-weight: 700;
+            font-size: 0.66rem;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            transition: all 0.25s;
+        }
+
+        .pay-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .pay-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .pay-note {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .pay-check {
+            margin-left: auto;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+
+        .pay-check::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            transition: all 0.25s;
+        }
+
+        .pay-card:hover {
+            border-color: var(--text-main);
+        }
+
+        .pay-option input:checked + .pay-card {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 15px var(--accent-glow);
+            background: rgba(255, 0, 127, 0.05);
+        }
+
+        .pay-option input:checked + .pay-card .pay-logo {
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .pay-option input:checked + .pay-card .pay-check {
+            border-color: var(--accent-pink);
+        }
+
+        .pay-option input:checked + .pay-card .pay-check::after {
+            background: var(--accent-pink);
+            box-shadow: 0 0 8px var(--accent-pink);
+        }
+
+        /* FOOTER / CONTACTS */
+        footer {
+            padding: 60px 5% 40px;
+            background: #020202;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand-col {
+            max-width: 360px;
+        }
+
+        .footer-brand {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-pink);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .footer-tagline {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.7;
+        }
+
+        .footer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .footer-heading {
+            color: var(--text-main);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .footer-contacts a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-contacts a:hover {
+            color: var(--accent-pink);
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 0.75rem;
+            padding-top: 20px;
+            border-top: 1px solid #111;
+        }
+
+        /* MARQUEE / РАЗДЕЛИТЕЛЬ */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
+        .marquee-divider {
+            overflow: hidden;
+            background: #0a0a0a;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            position: relative;
+        }
+
+        .marquee-divider::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 127, 0.5), transparent);
+            pointer-events: none;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: marquee 28s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-group {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .marquee-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            padding: 0 22px;
+            transition: text-shadow 0.2s;
+        }
+
+        .marquee-sep {
+            color: var(--accent-pink);
+            text-shadow: 0 0 8px var(--accent-glow);
+            font-size: 0.85rem;
+        }
+
+        .marquee-divider:hover .marquee-track {
+            animation-duration: 14s;
+        }
+
+        .marquee-divider:hover .marquee-item {
+            text-shadow: 2px 0 0 rgba(255, 23, 68, 0.9), -2px 0 0 rgba(0, 255, 135, 0.9);
+            animation: marquee-glitch 0.4s steps(1, end) infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marquee-glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-1px); }
+            40% { transform: translateX(1px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+
+        @keyframes pixel-drift {
+            0% { background-position: 0 0; }
+            100% { background-position: 28px 28px; }
+        }
+
+        /* ===== ГЛИТЧ-ЭФФЕКТЫ ДЛЯ КНОПОК ===== */
+        @keyframes glitch-jitter {
+            0%, 100% { transform: translate(0, 0); }
+            20% { transform: translate(-2px, 1px); }
+            40% { transform: translate(2px, -1px); }
+            60% { transform: translate(-1px, 2px); }
+            80% { transform: translate(1px, -2px); }
+        }
+
+        @keyframes glitch-slice-1 {
+            0%   { clip-path: inset(10% 0 85% 0); transform: translate(-4px, -2px); }
+            20%  { clip-path: inset(60% 0 30% 0); transform: translate(3px, 1px); }
+            40%  { clip-path: inset(30% 0 60% 0); transform: translate(-3px, 2px); }
+            60%  { clip-path: inset(80% 0 10% 0); transform: translate(4px, -1px); }
+            80%  { clip-path: inset(45% 0 45% 0); transform: translate(-2px, -2px); }
+            100% { clip-path: inset(10% 0 85% 0); transform: translate(-4px, -2px); }
+        }
+
+        @keyframes glitch-slice-2 {
+            0%   { clip-path: inset(85% 0 10% 0); transform: translate(4px, 2px); }
+            20%  { clip-path: inset(30% 0 55% 0); transform: translate(-3px, -1px); }
+            40%  { clip-path: inset(55% 0 30% 0); transform: translate(3px, -2px); }
+            60%  { clip-path: inset(10% 0 80% 0); transform: translate(-4px, 1px); }
+            80%  { clip-path: inset(45% 0 40% 0); transform: translate(2px, 2px); }
+            100% { clip-path: inset(85% 0 10% 0); transform: translate(4px, 2px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body,
+            .marquee-track,
+            .btn-buy-drop:hover,
+            .btn-buy-prod:hover,
+            .btn-submit-order:hover,
+            .btn-buy-drop:hover::before,
+            .btn-buy-drop:hover::after,
+            .btn-buy-prod:hover::before,
+            .btn-buy-prod:hover::after,
+            .btn-submit-order:hover::before,
+            .btn-submit-order:hover::after {
+                animation: none;
+            }
+        }
+
+        /* TYPOGRAPHY: АКЦЕНТНЫЙ ШРИФТ (RUSLAN DISPLAY) */
+        .logo-txt,
+        .hero h1,
+        .section-title,
+        .section-main-heading,
+        .prod-info h3,
+        .footer-brand {
+            font-family: 'Ruslan Display', serif;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .carousel-arrow { display: none; }
+            .size-modal { padding: 28px 20px; }
+            .preorder-modal { padding: 28px 20px; }
+            .section-main-heading { font-size: 1.6rem; }
+            .prod-info h3 { font-size: 1.05rem; }
+            .prod-price { font-size: 1.2rem; }
+            .marquee-item { font-size: 0.8rem; }
+            .size-table th, .size-table td { padding: 10px 8px; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- НАВИГАЦИЯ -->
+    <header>
+        <div class="logo-block">
+            <span class="logo-txt">ВЛЮБЛЕННЫЙ ДЬЯВОЛ</span>
+        </div>
+        <nav>
+            <a href="#hero">Главная</a>
+            <a href="#products">Товары</a>
+            <a href="#" onclick="openPreorderModal(); return false;">Предзаказ</a>
+            <a href="#" onclick="openSizeModal(); return false;">Размеры</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-buy-drop" data-text="В КАТАЛОГ" onclick="scrollToCatalog()">В КАТАЛОГ</button>
+            <button class="cart-btn" onclick="openCart()" aria-label="Корзина">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ БАННЕР -->
+    <section class="hero" id="hero">
+        <div class="hero-banner">
+            <!-- Главное лого с дьяволом -->
+            <img src="../images/main_banner.png" alt="Влюбленный Дьявол" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=60'">
+        </div>
+        <h1>Влюбленный Дьявол</h1>
+        <p>Лимитированная коллекция — худи, футболки и аксессуары в эстетике кибер-готики. Пока есть все размеры.</p>
+        <div class="hero-btns">
+            <button class="btn-buy-drop" data-text="Смотреть товары" onclick="scrollToCatalog()">Смотреть товары</button>
+            <button class="btn-sec" onclick="openSizeModal()">Размерная сетка</button>
+        </div>
+        <div class="drop-info-line">
+            <span>КОЛЛЕКЦИЯ <strong>NEW</strong></span>
+            <span>ТИРАЖ <strong>120 ШТ</strong></span>
+            <span>СТАТУС <strong>LIVE</strong></span>
+        </div>
+    </section>
+
+    <!-- БЕГУЩАЯ СТРОКА / РАЗДЕЛИТЕЛЬ -->
+    <div class="marquee-divider" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-group">
+                <span class="marquee-item">DEVIL IN LOVE</span><span class="marquee-sep">✦</span>
+                <span class="marquee-item">NEW COLLECTION</span><span class="marquee-sep">✦</span>
+                <span class="marquee-item">EXCLUSIVE WEAR</span><span class="marquee-sep">✦</span>
+            </div>
+            <div class="marquee-group">
+                <span class="marquee-item">DEVIL IN LOVE</span><span class="marquee-sep">✦</span>
+                <span class="marquee-item">NEW COLLECTION</span><span class="marquee-sep">✦</span>
+                <span class="marquee-item">EXCLUSIVE WEAR</span><span class="marquee-sep">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- КАТАЛОГ ТОВАРОВ -->
+    <section class="catalog-section" id="products">
+        <p class="section-title">New Collection</p>
+        <h2 class="section-main-heading">Товары</h2>
+
+        <div class="carousel-wrap">
+            <button class="carousel-arrow carousel-prev" onclick="scrollCarousel(-1)" aria-label="Прокрутить назад">‹</button>
+            <div class="products-grid" id="productsScroller">
+            
+            <!-- ТОВАР 1: Pikmi Lady -->
+            <div class="product-card" id="prod-1">
+                <div class="badge-limited">LIMITED</div>
+                <div class="img-container">
+                    <img src="../images/tovar_1_front.png" alt="PIKMI LADY / BLACK" class="img-front" onerror="this.src='https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500&auto=format&fit=crop&q=60'">
+                    <img src="../images/tovar_1_back.png" alt="PIKMI LADY / BLACK вид сзади" class="img-back" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'">
+                </div>
+                <div class="view-switchers">
+                    <button class="sw-btn active" onclick="switchView('prod-1', 'front')">Front</button>
+                    <button class="sw-btn" onclick="switchView('prod-1', 'back')">Back</button>
+                </div>
+                <div class="prod-info">
+                    <h3>PIKMI LADY / BLACK</h3>
+                    <p class="prod-desc">Мягкий премиальный трикотаж. Анатомический крой, рваные необработанные края и фирменный готический принт на груди.</p>
+                    <div class="prod-price">4 490 ₽</div>
+                    
+                    <p class="size-note">Размер: OVERSIZE. У всех товаров один размер. Если нужен другой — можем обсудить с Вами индивидуально.</p>
+                    <button class="btn-buy-prod" data-text="В корзину" onclick="addToCart('PIKMI LADY / BLACK', 4490)">В корзину</button>
+                </div>
+            </div>
+
+            <!-- ТОВАР 2: Prime Killer -->
+            <div class="product-card" id="prod-2">
+                <div class="badge-limited">LIMITED</div>
+                <div class="img-container">
+                    <img src="../images/tovar_2_front.png" alt="PRIME KILLER / DARK GREY" class="img-front" onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&auto=format&fit=crop&q=60'">
+                    <img src="../images/tovar_2_back.png" alt="PRIME KILLER / DARK GREY вид сзади" class="img-back" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'">
+                </div>
+                <div class="view-switchers">
+                    <button class="sw-btn active" onclick="switchView('prod-2', 'front')">Front</button>
+                    <button class="sw-btn" onclick="switchView('prod-2', 'back')">Back</button>
+                </div>
+                <div class="prod-info">
+                    <h3>PRIME KILLER / DARK GREY</h3>
+                    <p class="prod-desc">Сверхплотный футер (460g/m²). Глубокий кокон-капюшон, заниженная линия плеч и металлизированный принт на спине.</p>
+                    <div class="prod-price">4 990 ₽</div>
+                    
+                    <p class="size-note">Размер: OVERSIZE. У всех товаров один размер. Если нужен другой — можем обсудить с Вами индивидуально.</p>
+                    <button class="btn-buy-prod" data-text="В корзину" onclick="addToCart('PRIME KILLER / DARK GREY', 4990)">В корзину</button>
+                </div>
+            </div>
+
+            <!-- ТОВАР 3: White Prime -->
+            <div class="product-card" id="prod-3">
+                <div class="badge-limited">LIMITED</div>
+                <div class="img-container">
+                    <img src="../images/tovar_3_front.png" alt="PRIME / WHITE" class="img-front" onerror="this.src='https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop&q=60'">
+                    <img src="../images/tovar_3_back.png" alt="PRIME / WHITE вид сзади" class="img-back" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'">
+                </div>
+                <div class="view-switchers">
+                    <button class="sw-btn active" onclick="switchView('prod-3', 'front')">Front</button>
+                    <button class="sw-btn" onclick="switchView('prod-3', 'back')">Back</button>
+                </div>
+                <div class="prod-info">
+                    <h3>PRIME / WHITE</h3>
+                    <p class="prod-desc">Тяжелый плотный хлопок. Минималистичный вышитый логотип на груди, объемные рукава с фиксацией на манжетах.</p>
+                    <div class="prod-price">4 990 ₽</div>
+                    
+                    <p class="size-note">Размер: OVERSIZE. У всех товаров один размер. Если нужен другой — можем обсудить с Вами индивидуально.</p>
+                    <button class="btn-buy-prod" data-text="В корзину" onclick="addToCart('PRIME / WHITE', 4990)">В корзину</button>
+                </div>
+            </div>
+
+            <!-- ТОВАР 4: Heavy Oversize -->
+            <div class="product-card" id="prod-4">
+                <div class="badge-limited">LIMITED</div>
+                <div class="img-container">
+                    <img src="../images/tovar_4_front.png" alt="PRIME / GREY" class="img-front" onerror="this.src='https://images.unsplash.com/photo-1578681994506-b8f463449011?w=500&auto=format&fit=crop&q=60'">
+                    <img src="../images/tovar_4_back.png" alt="PRIME / GREY вид сзади" class="img-back" onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&auto=format&fit=crop&q=60'">
+                </div>
+                <div class="view-switchers">
+                    <button class="sw-btn active" onclick="switchView('prod-4', 'front')">Front</button>
+                    <button class="sw-btn" onclick="switchView('prod-4', 'back')">Back</button>
+                </div>
+                <div class="prod-info">
+                    <h3>PRIME / GREY</h3>
+                    <p class="prod-desc">Базовый дроп-силуэт с эффектом выстиранной ткани (acid wash). Максимальный комфорт и культовая оверсайз посадка.</p>
+                    <div class="prod-price">5 490 ₽</div>
+                    
+                    <p class="size-note">Размер: OVERSIZE. У всех товаров один размер. Если нужен другой — можем обсудить с Вами индивидуально.</p>
+                    <button class="btn-buy-prod" data-text="В корзину" onclick="addToCart('PRIME / GREY', 5490)">В корзину</button>
+                </div>
+            </div>
+
+            <!-- ТОВАР 5: Cyber Cargo Pants -->
+            <div class="product-card" id="prod-5">
+                <div class="badge-limited">LIMITED</div>
+                <div class="img-container">
+                    <img src="../images/tovar_5_front.png" alt="DEVIL IN LOVE / RED" class="img-front" onerror="this.src='https://images.unsplash.com/photo-1611601322175-ef8ec8c85f01?w=500&auto=format&fit=crop&q=60'">
+                    <img src="../images/tovar_5_back.png" alt="DEVIL IN LOVE / RED вид сзади" class="img-back" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'">
+                </div>
+                <div class="view-switchers">
+                    <button class="sw-btn active" onclick="switchView('prod-5', 'front')">Front</button>
+                    <button class="sw-btn" onclick="switchView('prod-5', 'back')">Back</button>
+                </div>
+                <div class="prod-info">
+                    <h3> Штаны DEVIL IN LOVE / RED</h3>
+                    <p class="prod-desc">Плотный деним с акцентными строчками. Массивные накладные карманы, регулируемые стропы и свободный крой.</p>
+                    <div class="prod-price">5 990 ₽</div>
+                    
+                    <p class="size-note">Размер: OVERSIZE. У всех товаров один размер. Если нужен другой — можем обсудить с Вами индивидуально.</p>
+                    <button class="btn-buy-prod" data-text="В корзину" onclick="addToCart('DEVIL IN LOVE / RED', 5990)">В корзину</button>
+                </div>
+            </div>
+
+            <!-- ТОВАР 6: Opium Ripped Jeans -->
+            <div class="product-card" id="prod-6">
+                <div class="badge-limited">LIMITED</div>
+                <div class="img-container">
+                    <img src="../images/tovar_6_front.png" alt="DEVIL IN LOVE / BLACK" class="img-front" onerror="this.src='https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&auto=format&fit=crop&q=60'">
+                    <img src="../images/tovar_6_back.png" alt="DEVIL IN LOVE / BLACK вид сзади" class="img-back" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&auto=format&fit=crop&q=60'">
+                </div>
+                <div class="view-switchers">
+                    <button class="sw-btn active" onclick="switchView('prod-6', 'front')">Front</button>
+                    <button class="sw-btn" onclick="switchView('prod-6', 'back')">Back</button>
+                </div>
+                <div class="prod-info">
+                    <h3>Штаны DEVIL IN LOVE / BLACK</h3>
+                    <p class="prod-desc">Тяжелый деним с текстурными разрывами и потертостями (destroyed effect). Прямой свободный крой, металлическая фурнитура.</p>
+                    <div class="prod-price">6 490 ₽</div>
+                    
+                    <p class="size-note">Размер: OVERSIZE. У всех товаров один размер. Если нужен другой — можем обсудить с Вами индивидуально.</p>
+                    <button class="btn-buy-prod" data-text="В корзину" onclick="addToCart('DEVIL IN LOVE / BLACK', 6490)">В корзину</button>
+                </div>
+            </div>
+
+            </div>
+            <button class="carousel-arrow carousel-next" onclick="scrollCarousel(1)" aria-label="Прокрутить вперёд">›</button>
+        </div>
+    </section>
+
+    <!-- МОДАЛЬНОЕ ОКНО РАЗМЕРНОЙ СЕТКИ -->
+    <div class="size-overlay" id="sizeModal" onclick="closeSizeModalOnOverlay(event)">
+        <div class="size-modal">
+            <button class="size-close" onclick="closeSizeModal()" aria-label="Закрыть">&times;</button>
+            <p class="section-title">Fit Guide</p>
+            <h2>Размерная сетка</h2>
+            <p class="size-modal-desc">Все мерки указаны в сантиметрах. Снятие параметров производится по изделию, разложенному на плоскости.</p>
+            <div class="fit-alert">
+                <strong>Оверсайз-посадка.</strong> Рекомендация по росту: S (до 170 см), M (171-180 см), L (181-190 см), XL (190+ см). Если хочешь ближе к телу — бери на размер меньше.
+            </div>
+            <table class="size-table">
+                <thead>
+                    <tr>
+                        <th>Размер</th>
+                        <th>Грудь</th>
+                        <th>Длина</th>
+                        <th>Рукав</th>
+                        <th>Рост</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>S</strong></td>
+                        <td>112</td>
+                        <td>70</td>
+                        <td>62</td>
+                        <td>до 170</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M</strong></td>
+                        <td>118</td>
+                        <td>72</td>
+                        <td>64</td>
+                        <td>171-180</td>
+                    </tr>
+                    <tr>
+                        <td><strong>L</strong></td>
+                        <td>124</td>
+                        <td>74</td>
+                        <td>66</td>
+                        <td>181-190</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XL</strong></td>
+                        <td>130</td>
+                        <td>76</td>
+                        <td>68</td>
+                        <td>190+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ПРЕДЗАКАЗА -->
+    <div class="preorder-overlay" id="preorderModal" onclick="closePreorderModalOnOverlay(event)">
+        <div class="preorder-modal">
+            <button class="preorder-close" onclick="closePreorderModal()" aria-label="Закрыть">&times;</button>
+            <p class="section-title">Next Drop Preview</p>
+            <h2>COMING SOON</h2>
+            <p class="size-modal-desc">Эксклюзивные футболки уже в работе. Подпишись на канал, чтобы первым узнать о старте дропа.</p>
+            <div class="preorder-track-wrap">
+                <div class="preorder-track">
+                    <div class="preorder-group">
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_1_front.png" alt="Gothic Tee" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_1_back.png" alt="Gothic Tee" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_2_front.png" alt="Memento Mori Tee" onerror="this.src='https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_2_back.png" alt="Memento Mori Tee" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_3_front.png" alt="Devilish Tee" onerror="this.src='https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_3_back.png" alt="Devilish Tee" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                    </div>
+                    <div class="preorder-group">
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_1_front.png" alt="Gothic Tee" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_1_back.png" alt="Gothic Tee" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_2_front.png" alt="Memento Mori Tee" onerror="this.src='https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_2_back.png" alt="Memento Mori Tee" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_3_front.png" alt="Devilish Tee" onerror="this.src='https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="preview-img"><img src="../images/preorder_3_back.png" alt="Devilish Tee" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="preorder-cta" onclick="openTelegramChannel()">ПОДПИСАТЬСЯ НА АНОНСЫ</button>
+        </div>
+    </div>
+
+    <!-- ОКНО ОФОРМЛЕНИЯ ЗАКАЗА -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeOrderModal()">&times;</button>
+            <h3>Заказ</h3>
+            <div class="order-summary-box" id="modalOrderSummary">
+                Оформление заказа: Товар в размере X
+            </div>
+            
+            <form id="orderForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-field">
+                    <label for="custName">Имя</label>
+                    <input type="text" id="custName" placeholder="Как к вам обращаться" required>
+                </div>
+                <div class="form-field">
+                    <label for="custPhone">Телефон</label>
+                    <input type="tel" id="custPhone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-field">
+                    <label for="custTg">Telegram-Юзернейм</label>
+                    <input type="text" id="custTg" placeholder="@username" required>
+                </div>
+                <div class="form-field">
+                    <label for="custDelivery">Способ доставки</label>
+                    <select id="custDelivery" required>
+                        <option value="" disabled selected>Выберите способ</option>
+                        <option value="СДЭК (До склада)">СДЭК (До склада)</option>
+                        <option value="СДЭК (До двери)">СДЭК (До двери)</option>
+                        <option value="Почта России">Почта России</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label>Способ оплаты</label>
+                    <div class="payment-options">
+                        <label class="pay-option">
+                            <input type="radio" name="payment" value="СБП" checked>
+                            <span class="pay-card">
+                                <span class="pay-logo">СБП</span>
+                                <span class="pay-info">
+                                    <span class="pay-name">Система быстрых платежей</span>
+                                    <span class="pay-note">0% комиссии</span>
+                                </span>
+                                <span class="pay-check"></span>
+                            </span>
+                        </label>
+                        <label class="pay-option">
+                            <input type="radio" name="payment" value="Банковская карта (Мир / Visa / Mastercard)">
+                            <span class="pay-card">
+                                <span class="pay-logo">МИР / VISA / MC</span>
+                                <span class="pay-info">
+                                    <span class="pay-name">Банковская карта</span>
+                                    <span class="pay-note">Без комиссии</span>
+                                </span>
+                                <span class="pay-check"></span>
+                            </span>
+                        </label>
+                        <label class="pay-option">
+                            <input type="radio" name="payment" value="СберПэй / Т-Пэй">
+                            <span class="pay-card">
+                                <span class="pay-logo">SBER · T-PAY</span>
+                                <span class="pay-info">
+                                    <span class="pay-name">СберПэй / Т-Пэй</span>
+                                    <span class="pay-note">Оплата в один клик</span>
+                                </span>
+                                <span class="pay-check"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit-order" data-text="Подтвердить заказ">Подтвердить заказ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ВСПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ -->
+    <div class="toast" id="statusToast">
+        <div class="toast-icon"></div>
+        <span id="toastMessage">Уведомление</span>
+    </div>
+
+    <!-- КОРЗИНА -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-head">
+            <h3>КОРЗИНА</h3>
+            <button class="cart-close" onclick="closeCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">Итого: <span id="cartTotal">0 ₽</span></div>
+            <button class="btn-checkout" onclick="checkout()">Перейти к оформлению</button>
+        </div>
+    </aside>
+
+    <!-- ФУТЕР / КОНТАКТЫ -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <div class="footer-brand">Влюбленный Дьявол</div>
+                <p class="footer-tagline">DESIGNED IN HELL.<br>MADE IN RUSSIA.</p>
+            </div>
+            <div class="footer-contacts">
+                <p class="footer-heading">Контакты</p>
+                <a href="https://t.me/bevilonlove666" target="_blank" rel="noopener noreferrer">Telegram-канал</a>
+                <a href="https://t.me/loved_devil_help_bot" target="_blank" rel="noopener noreferrer">Поддержка / Менеджер</a>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Влюбленный Дьявол. Limited streetwear.</div>
+    </footer>
+
+    <script>
+        // Глобальные переменные для текущего заказа
+        let cart = JSON.parse(localStorage.getItem('cart')) || []; // {key, name, price, size, qty}
+
+        // Плавная прокрутка
+        function scrollToCatalog() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Прокрутка ленты товаров стрелками
+        function scrollCarousel(direction) {
+            const scroller = document.getElementById('productsScroller');
+            const amount = scroller.clientWidth * 0.85;
+            scroller.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        }
+
+        // Горизонтальная прокрутка ленты товаров колесом мыши
+        (function () {
+            const scroller = document.getElementById('productsScroller');
+            if (!scroller) return;
+            scroller.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    e.preventDefault();
+                    scroller.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+        })();
+
+        // Открытие / закрытие модального окна размерной сетки
+        function openSizeModal() {
+            document.getElementById('sizeModal').classList.add('active');
+        }
+
+        function closeSizeModal() {
+            document.getElementById('sizeModal').classList.remove('active');
+        }
+
+        function closeSizeModalOnOverlay(event) {
+            if (event.target === document.getElementById('sizeModal')) {
+                closeSizeModal();
+            }
+        }
+
+        // Открытие / закрытие модального окна предзаказа
+        function openPreorderModal() {
+            document.getElementById('preorderModal').classList.add('active');
+        }
+
+        function closePreorderModal() {
+            document.getElementById('preorderModal').classList.remove('active');
+        }
+
+        function closePreorderModalOnOverlay(event) {
+            if (event.target === document.getElementById('preorderModal')) {
+                closePreorderModal();
+            }
+        }
+
+        // Открытие Telegram-канала (с поддержкой Mini App)
+        function openTelegramChannel() {
+            const url = 'https://t.me/bevilonlove666';
+            if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
+                window.Telegram.WebApp.openTelegramLink(url);
+            } else {
+                window.open(url, '_blank');
+            }
+        }
+
+        // Закрытие модальных окон по клавише Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSizeModal();
+                closePreorderModal();
+            }
+        });
+
+        // Переключение вида (Лицо / Спина)
+        function switchView(cardId, side) {
+            const card = document.getElementById(cardId);
+            const frontImg = card.querySelector('.img-front');
+            const backImg = card.querySelector('.img-back');
+            const buttons = card.querySelectorAll('.sw-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (side === 'front') {
+                frontImg.style.opacity = '1';
+                backImg.style.opacity = '0';
+                buttons[0].classList.add('active');
+            } else {
+                frontImg.style.opacity = '0';
+                backImg.style.opacity = '1';
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // Получение ID карточки по имени товара
+        function getCardId(name) {
+            if (name.includes("PIKMI")) return "prod-1";
+            if (name.includes("KILLER")) return "prod-2";
+            if (name.includes("WHITE")) return "prod-3";
+            if (name.includes("GREY")) return "prod-4";
+            if (name.includes("RED")) return "prod-5";
+            if (name.includes("BLACK")) return "prod-6";
+            return "";
+        }
+
+        // Добавление товара в корзину
+        function addToCart(name, price) {
+            const cardId = getCardId(name);
+            const size = "Oversize";
+
+            const key = cardId + '|' + size;
+            const existing = cart.find(item => item.key === key);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ key, name, price, size, qty: 1 });
+            }
+
+            renderCart();
+            openCart();
+            showToast(`Добавлено в корзину: ${name} (${size})`, "success");
+        }
+
+        // Отрисовка корзины
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            const totalEl = document.getElementById('cartTotal');
+            const countEl = document.getElementById('cartCount');
+
+            let totalQty = 0;
+            let totalSum = 0;
+            cart.forEach(item => {
+                totalQty += item.qty;
+                totalSum += item.qty * item.price;
+            });
+
+            countEl.textContent = totalQty;
+            countEl.style.display = totalQty > 0 ? 'flex' : 'none';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="cart-empty">Корзина пуста.<br>Добавь товары из каталога.</div>`;
+            } else {
+                container.innerHTML = cart.map((item, i) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-meta">Размер ${item.size} · ${item.price.toLocaleString()} ₽</div>
+                            <div class="cart-qty">
+                                <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
+                                <span class="qty-val">${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-right">
+                            <div class="cart-item-price">${(item.qty * item.price).toLocaleString()} ₽</div>
+                            <button class="cart-remove" onclick="removeFromCart(${i})" title="Удалить">&times;</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            totalEl.textContent = totalSum.toLocaleString() + ' ₽';
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Изменение количества товара
+        function changeQty(index, delta) {
+            if (!cart[index]) return;
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        // Удаление товара из корзины
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        // Открытие / закрытие корзины
+        function openCart() {
+            document.getElementById('cartOverlay').classList.add('active');
+            document.getElementById('cartSidebar').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartOverlay').classList.remove('active');
+            document.getElementById('cartSidebar').classList.remove('active');
+        }
+
+        // Переход к оформлению заказа
+        function checkout() {
+            if (cart.length === 0) {
+                showToast("Корзина пуста — добавьте товар!", "error");
+                return;
+            }
+            closeCart();
+            populateOrderSummary();
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        // Заполнение сводки заказа в модальном окне
+        function populateOrderSummary() {
+            const box = document.getElementById('modalOrderSummary');
+            const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+            const lines = cart.map(item =>
+                `${item.name} — ${item.size} × ${item.qty}`
+            ).join('<br>');
+
+            box.innerHTML =
+                `<strong style="color: #ff007f;">Ваш заказ:</strong><br>` +
+                lines +
+                `<br>Итого: <strong>${total.toLocaleString()} ₽</strong>`;
+        }
+
+        // Закрытие модального окна
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('active');
+            document.getElementById('orderForm').reset();
+        }
+
+        // Загрузка корзины при старте
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+        });
+
+        // Показ уведомлений
+        function showToast(message, type = "success") {
+            const toast = document.getElementById('statusToast');
+            const textSpan = document.getElementById('toastMessage');
+            
+            toast.className = `toast ${type}`;
+            textSpan.textContent = message;
+            
+            toast.classList.add('active');
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 4000);
+        }
+
+        // Обработка отправки формы
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            if (cart.length === 0) {
+                showToast("Корзина пуста — добавьте товар!", "error");
+                return;
+            }
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const tg = document.getElementById('custTg').value.trim();
+            const delivery = document.getElementById('custDelivery').value;
+
+            const paymentRadio = document.querySelector('input[name="payment"]:checked');
+            const payment = paymentRadio ? paymentRadio.value : "Не выбран";
+
+            const totalSum = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+
+            const order = {
+                createdAt: new Date().toISOString(),
+                name,
+                phone,
+                telegram: tg,
+                delivery,
+                payment,
+                total: totalSum,
+                items: cart.map(item => ({
+                    name: item.name,
+                    size: item.size,
+                    qty: item.qty,
+                    price: item.price
+                }))
+            };
+
+            try {
+                const orders = JSON.parse(localStorage.getItem('devil_onepage_orders') || '[]');
+                orders.unshift(order);
+                localStorage.setItem('devil_onepage_orders', JSON.stringify(orders.slice(0, 30)));
+            } catch (error) {
+                console.error(error);
+            }
+
+            showToast("Заказ сохранён. Свяжитесь с менеджером в Telegram для подтверждения.", "success");
+            cart = [];
+            renderCart();
+            localStorage.removeItem('cart');
+            closeOrderModal();
+        }
+    </script>
+</body>
+</html>

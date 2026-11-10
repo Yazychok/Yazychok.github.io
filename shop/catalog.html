@@ -1,0 +1,5686 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — Влюблённый Дьявол</title>
+    <meta name="description" content="Каталог коллекции «Влюблённый Дьявол»: худи, олимпийка и карго-джоггеры. Оверсайз, ручная обработка, размеры S–XL.">
+    <meta name="theme-color" content="#060607">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Ruslan+Display&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+/* ============================================================
+   ВЛЮБЛЁННЫЙ ДЬЯВОЛ — shared design system
+   ============================================================ */
+
+:root {
+    --bg: #060607;
+    --bg-soft: #09090b;
+    --panel: #0d0d10;
+    --panel-2: #121216;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-strong: rgba(255, 255, 255, 0.18);
+    --text: #f3f0f2;
+    --muted: #8c8991;
+    --muted-2: #817d87;
+    --pink: #ff0a78;
+    --pink-soft: #ff8ac3;
+    --pink-dim: rgba(255, 10, 120, 0.12);
+    --pink-line: rgba(255, 10, 120, 0.38);
+    --red: #a80024;
+    --font-body: 'JetBrains Mono', 'Courier New', monospace;
+    --font-display: 'Ruslan Display', 'Times New Roman', serif;
+    --container: 1320px;
+    --pad: clamp(20px, 4vw, 54px);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --header-h: 82px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 26px 26px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    animation: pixel-drift 90s linear infinite;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+::selection {
+    background: var(--pink);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #08080a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a2a30;
+    border: 2px solid #08080a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pink);
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5 {
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 1px solid var(--pink);
+    outline-offset: 3px;
+}
+
+@keyframes pixel-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 26px 26px; }
+}
+
+@keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+@keyframes marquee-x {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes glitch-slice-a {
+    0% { clip-path: inset(8% 0 82% 0); transform: translate(-3px, 0); }
+    22% { clip-path: inset(58% 0 28% 0); transform: translate(3px, 0); }
+    44% { clip-path: inset(30% 0 58% 0); transform: translate(-2px, 0); }
+    66% { clip-path: inset(76% 0 12% 0); transform: translate(2px, 0); }
+    88% { clip-path: inset(44% 0 42% 0); transform: translate(-3px, 0); }
+    100% { clip-path: inset(8% 0 82% 0); transform: translate(-3px, 0); }
+}
+
+@keyframes glitch-slice-b {
+    0% { clip-path: inset(80% 0 8% 0); transform: translate(3px, 0); }
+    22% { clip-path: inset(26% 0 58% 0); transform: translate(-3px, 0); }
+    44% { clip-path: inset(52% 0 30% 0); transform: translate(2px, 0); }
+    66% { clip-path: inset(12% 0 78% 0); transform: translate(-2px, 0); }
+    88% { clip-path: inset(40% 0 46% 0); transform: translate(3px, 0); }
+    100% { clip-path: inset(80% 0 8% 0); transform: translate(3px, 0); }
+}
+
+/* ============================================================
+   LAYOUT / TYPE UTILITIES
+   ============================================================ */
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+}
+
+.section {
+    position: relative;
+    padding: clamp(72px, 9vw, 124px) 0;
+}
+
+section[id],
+div[id="contacts"] {
+    scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.section--tight {
+    padding: clamp(50px, 6vw, 80px) 0;
+}
+
+.section--line {
+    border-top: 1px solid var(--line);
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--pink);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+    flex: none;
+}
+
+.eyebrow--center {
+    justify-content: center;
+}
+
+.eyebrow--center::after {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+}
+
+.display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+.pink {
+    color: var(--pink);
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: clamp(32px, 5vw, 52px);
+}
+
+.section-head__text {
+    max-width: 720px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.4vw, 3.6rem);
+    line-height: 1.02;
+    margin-top: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.section-sub {
+    max-width: 540px;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.8;
+}
+
+.section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line-strong);
+    transition: color 0.25s, border-color 0.25s, gap 0.25s;
+    white-space: nowrap;
+}
+
+.section-link svg {
+    width: 15px;
+    height: 15px;
+    transition: transform 0.25s;
+}
+
+.section-link:hover {
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
+.section-link:hover svg {
+    transform: translateX(4px);
+}
+
+/* ============================================================
+   BUTTONS / ICONS
+   ============================================================ */
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 26px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: color 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.35s, transform 0.25s;
+}
+
+.btn > span,
+.btn > svg {
+    position: relative;
+    z-index: 2;
+}
+
+.btn svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: #fff;
+    transform: translateY(101%);
+    transition: transform 0.4s var(--ease);
+}
+
+.btn-primary {
+    background: var(--pink);
+    border-color: var(--pink);
+    color: #fff;
+    box-shadow: 0 0 22px rgba(255, 10, 120, 0.22);
+}
+
+.btn-primary:hover {
+    color: #09090b;
+    border-color: #fff;
+    box-shadow: 0 0 32px rgba(255, 10, 120, 0.5);
+}
+
+.btn-primary:hover::before {
+    transform: translateY(0);
+}
+
+.btn-ghost {
+    border-color: var(--line-strong);
+}
+
+.btn-ghost::before {
+    background: var(--pink);
+}
+
+.btn-ghost:hover {
+    color: #fff;
+    border-color: var(--pink);
+    box-shadow: 0 0 24px rgba(255, 10, 120, 0.3);
+}
+
+.btn-ghost:hover::before {
+    transform: translateY(0);
+}
+
+.btn-light {
+    background: #f4f1ee;
+    border-color: #f4f1ee;
+    color: #09090b;
+}
+
+.btn-light::before {
+    background: var(--pink);
+}
+
+.btn-light:hover {
+    color: #fff;
+    border-color: var(--pink);
+}
+
+.btn-light:hover::before {
+    transform: translateY(0);
+}
+
+.btn--sm {
+    min-height: 42px;
+    padding: 0 15px;
+    font-size: 0.59rem;
+    letter-spacing: 0.14em;
+}
+
+.btn--lg {
+    min-height: 60px;
+    padding: 0 34px;
+    font-size: 0.72rem;
+}
+
+.btn--full {
+    width: 100%;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    flex: none;
+}
+
+.link-btn {
+    display: inline;
+    border: 0;
+    background: none;
+    color: var(--pink);
+    font-family: var(--font-body);
+    font-size: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0;
+}
+
+.link-btn:hover {
+    color: #fff;
+}
+
+.mt-10 { margin-top: 10px !important; }
+.mt-20 { margin-top: 20px !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-2 { margin-bottom: 2px !important; }
+.actions-center { justify-content: center; }
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 0 var(--pad);
+    background: rgba(6, 6, 7, 0.72);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: height 0.3s var(--ease), background 0.3s;
+}
+
+.site-header.scrolled {
+    height: 68px;
+    background: rgba(6, 6, 7, 0.94);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex: none;
+}
+
+.logo-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    box-shadow: inset 0 0 18px rgba(255, 10, 120, 0.14), 0 0 18px rgba(255, 10, 120, 0.12);
+    flex: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.logo:hover .logo-mark {
+    background: var(--pink);
+    color: #fff;
+}
+
+.logo-text {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    line-height: 1.06;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.logo-text span {
+    color: var(--pink);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.4vw, 34px);
+}
+
+.main-nav a {
+    position: relative;
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 0;
+    transition: color 0.25s;
+    white-space: nowrap;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--text);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    transform: scaleX(1);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: none;
+}
+
+.header-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    font-size: 0.61rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.25s, color 0.25s, background 0.25s, box-shadow 0.25s;
+    white-space: nowrap;
+}
+
+.header-cta:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+    background: var(--pink-dim);
+    box-shadow: 0 0 20px rgba(255, 10, 120, 0.16);
+}
+
+.cart-btn {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #101013;
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+    flex: none;
+}
+
+.cart-btn:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+    box-shadow: 0 0 20px rgba(255, 10, 120, 0.22);
+}
+
+.cart-btn svg {
+    width: 19px;
+    height: 19px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: var(--pink);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(255, 10, 120, 0.6);
+}
+
+.burger {
+    display: none;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    background: #101013;
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    flex: none;
+    transition: border-color 0.25s, color 0.25s;
+}
+
+.burger:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+}
+
+.burger svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* mobile menu */
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    background: #070708;
+    background-image: radial-gradient(circle at 80% 10%, rgba(255, 10, 120, 0.12), transparent 45%);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.5s var(--ease), visibility 0.5s;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.mobile-menu__head {
+    height: var(--header-h);
+    padding: 0 var(--pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    flex: none;
+}
+
+.mobile-menu__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding: 30px var(--pad);
+    overflow-y: auto;
+}
+
+.mobile-menu__nav a {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 7vw, 2.6rem);
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.25s, padding-left 0.3s;
+}
+
+.mobile-menu__nav a small {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    color: var(--pink);
+    letter-spacing: 0.12em;
+}
+
+.mobile-menu__nav a:hover,
+.mobile-menu__nav a.active {
+    color: var(--pink);
+    padding-left: 10px;
+}
+
+.mobile-menu__foot {
+    padding: 22px var(--pad) 30px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: none;
+}
+
+.mobile-menu__foot a {
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+}
+
+.mobile-menu__foot a:hover {
+    color: var(--pink);
+}
+
+.mobile-menu__foot span {
+    color: var(--muted-2);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   HOME HERO
+   ============================================================ */
+
+.hero-home {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 150px 0 80px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 78% 18%, rgba(255, 10, 120, 0.14), transparent 42%),
+        radial-gradient(circle at 12% 88%, rgba(168, 0, 36, 0.12), transparent 45%);
+}
+
+.hero-home::before {
+    content: "666";
+    position: absolute;
+    right: -3vw;
+    top: 4vh;
+    font-family: var(--font-display);
+    font-size: clamp(16rem, 42vw, 40rem);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+    user-select: none;
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(40px, 6vw, 90px);
+    align-items: center;
+    width: 100%;
+}
+
+.hero-copy {
+    max-width: 760px;
+    min-width: 0;
+}
+
+.hero-visual {
+    min-width: 0;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--pink);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    border: 1px solid var(--pink-line);
+    background: rgba(255, 10, 120, 0.06);
+    padding: 8px 13px;
+}
+
+.hero-kicker .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 10px var(--pink);
+    animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 5.6vw, 4.9rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    margin: 26px 0 26px;
+    text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.hero-title span {
+    display: block;
+}
+
+.hero-title .pink {
+    background: linear-gradient(180deg, #ffd3e5 0%, #ff2f8e 48%, #a3004c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 28px rgba(255, 10, 120, 0.26));
+}
+
+.hero-sub {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.85;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 34px;
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    align-items: stretch;
+    margin-top: 54px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+
+.hero-stats > div {
+    padding: 0 26px;
+    border-left: 1px solid var(--line);
+}
+
+.hero-stats > div:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+.hero-stats strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 7px;
+}
+
+.hero-stats span {
+    display: block;
+    color: var(--muted-2);
+    font-size: 0.57rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.hero-visual {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    justify-self: end;
+}
+
+.hero-frame {
+    position: relative;
+    padding: 13px;
+    background: #0a0a0c;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+}
+
+.hero-frame::before,
+.hero-frame::after {
+    content: "";
+    position: absolute;
+    width: 58%;
+    height: 58%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero-frame::before {
+    top: -14px;
+    left: -14px;
+    border-top: 1px solid var(--pink);
+    border-left: 1px solid var(--pink);
+}
+
+.hero-frame::after {
+    right: -14px;
+    bottom: -14px;
+    border-right: 1px solid var(--pink);
+    border-bottom: 1px solid var(--pink);
+}
+
+.hero-frame img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.03);
+}
+
+.hero-frame-tag {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    background: rgba(6, 6, 7, 0.86);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+    color: var(--text);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.hero-frame-tag i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+}
+
+.hero-side {
+    position: absolute;
+    right: -22px;
+    top: 30px;
+    writing-mode: vertical-rl;
+    color: var(--muted-2);
+    font-size: 0.55rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+}
+
+.hero-sticker {
+    position: absolute;
+    left: -34px;
+    bottom: 54px;
+    width: 112px;
+    height: 112px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--pink-line);
+    background: #08080a;
+    color: var(--pink);
+    text-align: center;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    box-shadow: 0 0 44px rgba(255, 10, 120, 0.2), inset 0 0 25px rgba(255, 10, 120, 0.08);
+    transform: rotate(-10deg);
+    animation: float-y 6s ease-in-out infinite;
+    z-index: 2;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+
+.marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 15px 0;
+    background: #09090b;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.marquee::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 10, 120, 0.55), transparent);
+    pointer-events: none;
+}
+
+.marquee-track {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    animation: marquee-x 34s linear infinite;
+    will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-group {
+    display: inline-flex;
+    align-items: center;
+}
+
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 24px;
+    color: var(--text);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.marquee-item i {
+    color: var(--pink);
+    font-style: normal;
+    text-shadow: 0 0 10px rgba(255, 10, 120, 0.7);
+}
+
+/* ============================================================
+   PRODUCT CARDS
+   ============================================================ */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.products-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    transition: transform 0.45s var(--ease), border-color 0.3s, box-shadow 0.45s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--pink-line);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 10, 120, 0.06);
+}
+
+.card-media {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #e9e6e1;
+}
+
+.media-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.45s ease, transform 0.9s var(--ease);
+}
+
+.card-media .img-back {
+    opacity: 0;
+}
+
+.card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 62%, rgba(0, 0, 0, 0.16));
+}
+
+@media (hover: hover) {
+    .product-card:hover .card-media .img-front {
+        opacity: 0;
+    }
+    .product-card:hover .card-media .img-back {
+        opacity: 1;
+    }
+    .product-card:hover .card-media img {
+        transform: scale(1.035);
+    }
+}
+
+.product-card.show-back .card-media .img-front {
+    opacity: 0;
+}
+
+.product-card.show-back .card-media .img-back {
+    opacity: 1;
+}
+
+.card-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    padding: 6px 9px;
+    background: rgba(8, 8, 10, 0.92);
+    border: 1px solid var(--pink-line);
+    color: var(--pink);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+.card-index {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    z-index: 3;
+    color: rgba(6, 6, 7, 0.55);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.view-toggle {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    z-index: 3;
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(8, 8, 10, 0.82);
+    backdrop-filter: blur(8px);
+}
+
+.view-toggle button {
+    border: 0;
+    background: transparent;
+    color: #96939a;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 9px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.view-toggle button + button {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-toggle button.active,
+.view-toggle button:hover {
+    color: var(--pink);
+    background: rgba(255, 10, 120, 0.1);
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted-2);
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+.card-title a {
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+.card-title a:hover {
+    color: var(--pink);
+}
+
+.card-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+
+.price--old {
+    color: var(--muted-2);
+    font-size: 0.74rem;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.size-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.size-label {
+    margin-right: 4px;
+    color: var(--muted-2);
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.size-chip {
+    width: 30px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2a2a30;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.58rem;
+    font-weight: 700;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.size-chip:hover {
+    border-color: var(--line-strong);
+    color: var(--text);
+}
+
+.size-chip.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    background: var(--pink-dim);
+}
+
+.card-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.card-buttons .btn {
+    padding: 0 10px;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   HOME FEATURES / EDITORIAL / TEASER / CTA
+   ============================================================ */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: #08080a;
+}
+
+.feature {
+    padding: 30px 26px;
+    border-left: 1px solid var(--line);
+}
+
+.feature:first-child {
+    border-left: 0;
+}
+
+.feature-num {
+    color: var(--pink);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.65;
+}
+
+.editorial {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 7vw, 100px);
+    align-items: center;
+}
+
+.editorial-media {
+    position: relative;
+    min-height: 560px;
+}
+
+.editorial-media img {
+    position: absolute;
+    object-fit: cover;
+    border: 1px solid var(--line);
+}
+
+.editorial-media .e-main {
+    top: 0;
+    left: 0;
+    width: 74%;
+    aspect-ratio: 1;
+}
+
+.editorial-media .e-second {
+    right: 0;
+    bottom: 0;
+    width: 48%;
+    aspect-ratio: 1;
+    border: 10px solid var(--bg);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+}
+
+.e-stamp {
+    position: absolute;
+    top: 30px;
+    right: 2%;
+    z-index: 2;
+    padding: 16px 14px;
+    background: var(--pink);
+    color: #fff;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.5;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(6deg);
+    box-shadow: 0 0 30px rgba(255, 10, 120, 0.35);
+}
+
+.editorial-copy h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin: 14px 0 22px;
+}
+
+.editorial-copy > p {
+    max-width: 540px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.85;
+}
+
+.check-list {
+    list-style: none;
+    display: grid;
+    gap: 11px;
+    margin: 26px 0 32px;
+}
+
+.check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #d8d5da;
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.check-list li::before {
+    content: "+";
+    color: var(--pink);
+    font-weight: 700;
+    line-height: 1.3;
+    text-shadow: 0 0 8px rgba(255, 10, 120, 0.6);
+}
+
+.teaser {
+    position: relative;
+    padding: clamp(70px, 8vw, 110px) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 10, 120, 0.08), transparent 48%),
+        #08080a;
+    overflow: hidden;
+}
+
+.teaser::before {
+    content: "SOON";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(9rem, 25vw, 24rem);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.035);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.teaser-head {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 46px;
+}
+
+.teaser-head .eyebrow {
+    justify-content: center;
+}
+
+.teaser-head .eyebrow::after {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+}
+
+.teaser-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 16px 0 16px;
+}
+
+.teaser-head p {
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.teaser-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 34px;
+}
+
+.teaser-card {
+    position: relative;
+    display: block;
+    aspect-ratio: 0.92;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #e9e6e1;
+    text-decoration: none;
+}
+
+.teaser-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease), filter 0.5s;
+}
+
+.teaser-card:hover img {
+    transform: scale(1.05);
+}
+
+.teaser-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8));
+}
+
+.teaser-card__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    padding: 6px 9px;
+    background: rgba(8, 8, 10, 0.9);
+    border: 1px solid var(--pink-line);
+    color: var(--pink);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.teaser-card__foot {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    color: #fff;
+}
+
+.teaser-card__foot strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.teaser-card__foot small {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.teaser-card__foot span {
+    color: var(--pink);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+}
+
+.teaser-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-band {
+    position: relative;
+    padding: clamp(80px, 10vw, 130px) 0;
+    text-align: center;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 120%, rgba(255, 10, 120, 0.2), transparent 58%);
+}
+
+.cta-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: linear-gradient(180deg, transparent, #000 40%, transparent);
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%, transparent);
+    pointer-events: none;
+}
+
+.cta-band .container {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-band h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 5.4rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 18px 0;
+}
+
+.cta-band p {
+    max-width: 540px;
+    margin: 0 auto 30px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.8;
+}
+
+/* ============================================================
+   PAGE HERO / BREADCRUMBS
+   ============================================================ */
+
+.page-hero {
+    position: relative;
+    padding: calc(var(--header-h) + 84px) 0 64px;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    background: radial-gradient(circle at 85% 10%, rgba(255, 10, 120, 0.08), transparent 42%);
+}
+
+.page-hero::before {
+    content: attr(data-word);
+    position: absolute;
+    right: -2%;
+    top: 100px;
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 19vw, 18rem);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.045);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    color: var(--muted-2);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 34px;
+}
+
+.breadcrumbs a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: var(--pink);
+}
+
+.breadcrumbs span.sep {
+    color: var(--pink);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 9vw, 8rem);
+    line-height: 0.88;
+    text-transform: uppercase;
+    margin: 18px 0 0;
+}
+
+.page-hero__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.page-hero__desc {
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.8;
+}
+
+.page-meta {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    color: var(--muted-2);
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.page-meta strong {
+    display: block;
+    color: var(--text);
+    font-size: 0.68rem;
+    margin-bottom: 4px;
+}
+
+/* ============================================================
+   CATALOG
+   ============================================================ */
+
+.catalog-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 34px;
+}
+
+.catalog-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    padding: 8px 13px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.filter-btn sup {
+    color: var(--muted-2);
+    font-size: 0.5rem;
+    margin-left: 4px;
+}
+
+.filter-btn:hover {
+    color: var(--text);
+    border-color: var(--line-strong);
+}
+
+.filter-btn.active {
+    color: var(--pink);
+    border-color: var(--pink-line);
+    background: var(--pink-dim);
+}
+
+.filter-btn.active sup {
+    color: var(--pink);
+}
+
+.catalog-count {
+    color: var(--muted-2);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.catalog-count strong {
+    color: var(--text);
+}
+
+.catalog-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    margin-bottom: 34px;
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--pink);
+    background: rgba(255, 10, 120, 0.035);
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.65;
+}
+
+.catalog-note strong {
+    color: var(--text);
+}
+
+@keyframes filter-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-card.filter-in {
+    animation: filter-in 0.45s var(--ease) both;
+}
+
+/* ============================================================
+   PRODUCT DETAIL
+   ============================================================ */
+
+.product-page {
+    padding-top: calc(var(--header-h) + 34px);
+    padding-bottom: clamp(70px, 8vw, 110px);
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: clamp(36px, 5vw, 80px);
+    align-items: start;
+    padding-top: 44px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+}
+
+.gallery-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gallery-thumb {
+    position: relative;
+    width: 78px;
+    height: 86px;
+    padding: 0;
+    border: 1px solid var(--line);
+    background: #e9e6e1;
+    overflow: hidden;
+    opacity: 0.55;
+    transition: opacity 0.25s, border-color 0.25s;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb.active {
+    opacity: 1;
+    border-color: var(--pink);
+}
+
+.gallery-main {
+    position: relative;
+    aspect-ratio: 1;
+    background: #e9e6e1;
+    border: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.35s ease, transform 0.8s var(--ease);
+}
+
+.gallery-main:hover img {
+    transform: scale(1.035);
+}
+
+.gallery-label {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    z-index: 2;
+    padding: 7px 11px;
+    background: rgba(8, 8, 10, 0.88);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 0.54rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+.gallery-counter {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2;
+    color: rgba(6, 6, 7, 0.55);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.product-info {
+    position: sticky;
+    top: 108px;
+}
+
+.product-kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--pink);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.product-kicker::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: var(--pink);
+}
+
+.product-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+    line-height: 0.98;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+}
+
+.product-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.product-price-old {
+    color: var(--muted-2);
+    font-size: 0.9rem;
+    text-decoration: line-through;
+}
+
+.product-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: auto;
+    color: #00e676;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.product-stock i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00e676;
+    box-shadow: 0 0 9px #00e676;
+    animation: pulse-dot 1.8s infinite;
+}
+
+.product-desc {
+    padding: 22px 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.85;
+}
+
+.product-meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.meta-pill {
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.54rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.option-block {
+    margin-bottom: 22px;
+}
+
+.option-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.option-label {
+    color: var(--text);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.option-label span {
+    color: var(--muted-2);
+    font-weight: 400;
+}
+
+.option-link {
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-size: 0.56rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.option-link:hover {
+    color: var(--pink);
+}
+
+.size-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.size-option {
+    min-width: 50px;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #2c2c33;
+    background: #0f0f12;
+    color: var(--muted);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.size-option:hover {
+    border-color: var(--line-strong);
+    color: var(--text);
+}
+
+.size-option.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    background: var(--pink-dim);
+    box-shadow: 0 0 16px rgba(255, 10, 120, 0.16);
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--line-strong);
+    flex: none;
+}
+
+.qty button {
+    width: 42px;
+    height: 52px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: color 0.2s, background 0.2s;
+}
+
+.qty button:hover {
+    color: var(--pink);
+    background: rgba(255, 10, 120, 0.06);
+}
+
+.qty span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.product-actions .btn {
+    flex: 1;
+}
+
+.product-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 13px 15px;
+    border-left: 2px solid var(--pink);
+    background: rgba(255, 10, 120, 0.045);
+    color: var(--muted);
+    font-size: 0.68rem;
+    line-height: 1.6;
+}
+
+.product-note strong {
+    color: var(--text);
+}
+
+.product-benefits {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.71rem;
+    line-height: 1.5;
+}
+
+.benefit svg {
+    width: 16px;
+    height: 16px;
+    color: var(--pink);
+    flex: none;
+    margin-top: 1px;
+}
+
+.benefit strong {
+    display: block;
+    color: var(--text);
+    font-size: 0.72rem;
+    margin-bottom: 2px;
+}
+
+.acc {
+    border-top: 1px solid var(--line);
+}
+
+.acc:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.acc summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 0;
+    color: var(--text);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.acc summary::-webkit-details-marker {
+    display: none;
+}
+
+.acc summary::after {
+    content: "+";
+    color: var(--pink);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.3s;
+}
+
+.acc[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.acc-body {
+    padding: 0 0 18px;
+    color: var(--muted);
+    font-size: 0.74rem;
+    line-height: 1.8;
+}
+
+.acc-body ul {
+    list-style: none;
+    display: grid;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.acc-body li {
+    padding-left: 14px;
+    position: relative;
+}
+
+.acc-body li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+}
+
+.product-gallery-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    color: var(--muted-2);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.product-gallery-note i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--pink);
+}
+
+/* ============================================================
+   PREORDER PAGE
+   ============================================================ */
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    max-width: 520px;
+    margin-top: 28px;
+}
+
+.countdown-cell {
+    border: 1px solid var(--line);
+    background: rgba(13, 13, 16, 0.72);
+    padding: 13px 10px;
+    text-align: center;
+}
+
+.countdown-cell strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 7px;
+}
+
+.countdown-cell span {
+    color: var(--muted-2);
+    font-size: 0.5rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.waitlist {
+    display: flex;
+    max-width: 560px;
+    border: 1px solid var(--line-strong);
+    background: #0d0d10;
+    margin-top: 28px;
+}
+
+.waitlist input {
+    flex: 1;
+    min-width: 0;
+    height: 54px;
+    padding: 0 18px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.76rem;
+}
+
+.waitlist input::placeholder {
+    color: var(--muted-2);
+}
+
+.waitlist input:focus {
+    outline: none;
+}
+
+.waitlist button {
+    border: 0;
+    min-height: 54px;
+    padding: 0 22px;
+    background: var(--pink);
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s;
+    white-space: nowrap;
+}
+
+.waitlist button:hover {
+    background: #fff;
+    color: #09090b;
+}
+
+.soon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.soon-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, transform 0.4s var(--ease);
+}
+
+.soon-card:hover {
+    border-color: var(--pink-line);
+    transform: translateY(-5px);
+}
+
+.soon-media {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #e9e6e1;
+}
+
+.soon-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.45s, transform 0.8s var(--ease);
+}
+
+.soon-media .img-back {
+    opacity: 0;
+}
+
+.soon-card:hover .soon-media .img-front {
+    opacity: 0;
+}
+
+.soon-card:hover .soon-media .img-back {
+    opacity: 1;
+}
+
+.soon-card:hover .soon-media img {
+    transform: scale(1.035);
+}
+
+.soon-card .card-badge {
+    color: var(--pink);
+}
+
+.soon-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.soon-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.soon-note {
+    color: var(--muted);
+    font-size: 0.74rem;
+    line-height: 1.65;
+}
+
+.soon-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.soon-price strong {
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.soon-price span {
+    color: var(--muted-2);
+    font-size: 0.54rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.soon-body .btn {
+    margin-top: 4px;
+}
+
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+}
+
+.timeline-step {
+    padding: 26px 22px 0 0;
+    border-right: 1px solid var(--line);
+}
+
+.timeline-step:last-child {
+    border-right: 0;
+}
+
+.timeline-num {
+    display: block;
+    color: var(--pink);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 16px;
+}
+
+.timeline-date {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.timeline-step h3 {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.timeline-step p {
+    color: var(--muted);
+    font-size: 0.7rem;
+    line-height: 1.6;
+}
+
+.soon-strip {
+    position: relative;
+    overflow: hidden;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: #08080a;
+}
+
+.soon-strip .marquee-track {
+    animation-duration: 50s;
+}
+
+.soon-strip .marquee-group {
+    gap: 14px;
+    padding-right: 14px;
+}
+
+.soon-strip img {
+    width: 190px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: #e9e6e1;
+}
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+
+.manifesto {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(40px, 7vw, 100px);
+    align-items: center;
+}
+
+.manifesto-media {
+    position: relative;
+    padding: 13px;
+    border: 1px solid var(--line-strong);
+    background: #0a0a0c;
+}
+
+.manifesto-media::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    width: 55%;
+    height: 55%;
+    border-top: 1px solid var(--pink);
+    border-left: 1px solid var(--pink);
+    z-index: -1;
+}
+
+.manifesto-media img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.manifesto-copy h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.4vw, 3.7rem);
+    line-height: 1.02;
+    text-transform: uppercase;
+    margin: 14px 0 22px;
+}
+
+.manifesto-copy p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+.signature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    color: var(--muted-2);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.signature i {
+    width: 44px;
+    height: 1px;
+    background: var(--pink);
+}
+
+.quote {
+    position: relative;
+    padding: clamp(50px, 7vw, 90px) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.quote::before {
+    content: "“";
+    position: absolute;
+    left: 2%;
+    top: -20px;
+    font-family: var(--font-display);
+    font-size: 22rem;
+    line-height: 1;
+    color: rgba(255, 10, 120, 0.08);
+    pointer-events: none;
+}
+
+.quote blockquote {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4.4vw, 3.7rem);
+    line-height: 1.12;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.quote blockquote span {
+    color: var(--pink);
+}
+
+.quote cite {
+    display: block;
+    margin-top: 24px;
+    color: var(--muted-2);
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-style: normal;
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.value-card {
+    padding: 30px 26px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.value-card:hover {
+    border-color: var(--pink-line);
+    background: #101014;
+}
+
+.value-card__num {
+    color: var(--pink);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 24px;
+}
+
+.value-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.value-card p {
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.75;
+}
+
+.process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+}
+
+.process-step {
+    padding: 24px 22px 0 0;
+    border-right: 1px solid var(--line);
+}
+
+.process-step:last-child {
+    border-right: 0;
+}
+
+.process-step strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--pink);
+    margin-bottom: 16px;
+}
+
+.process-step h3 {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.process-step p {
+    color: var(--muted);
+    font-size: 0.7rem;
+    line-height: 1.6;
+}
+
+.gallery-collage {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    gap: 14px;
+}
+
+.gallery-collage figure {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #e9e6e1;
+    margin: 0;
+}
+
+.gallery-collage figure:nth-child(1) {
+    aspect-ratio: 0.88;
+}
+
+.gallery-collage figure:nth-child(2),
+.gallery-collage figure:nth-child(3) {
+    aspect-ratio: 0.88;
+    margin-top: 40px;
+}
+
+.gallery-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+}
+
+.gallery-collage figure:hover img {
+    transform: scale(1.045);
+}
+
+.gallery-collage figcaption {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    padding: 6px 9px;
+    background: rgba(8, 8, 10, 0.86);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 0.52rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
+.contact-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 32px;
+    border: 1px solid var(--pink-line);
+    background:
+        linear-gradient(90deg, rgba(255, 10, 120, 0.09), transparent 60%),
+        #0c0c0f;
+}
+
+.contact-band h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.contact-band p {
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+.contact-band__actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ============================================================
+   DELIVERY PAGE
+   ============================================================ */
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    position: relative;
+    padding: 30px 26px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    transition: border-color 0.3s, transform 0.35s var(--ease);
+}
+
+.info-card:hover {
+    border-color: var(--pink-line);
+    transform: translateY(-4px);
+}
+
+.info-card__icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--pink-line);
+    color: var(--pink);
+    background: var(--pink-dim);
+    margin-bottom: 22px;
+}
+
+.info-card__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.info-card h3 {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    color: var(--muted);
+    font-size: 0.74rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.info-card__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 0.68rem;
+}
+
+.info-card__row strong {
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.info-card__row span {
+    color: var(--muted-2);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 22px;
+    border: 1px solid var(--pink-line);
+    background: rgba(255, 10, 120, 0.055);
+    color: var(--muted);
+    font-size: 0.74rem;
+    line-height: 1.7;
+}
+
+.notice svg {
+    width: 20px;
+    height: 20px;
+    color: var(--pink);
+    flex: none;
+    margin-top: 1px;
+}
+
+.notice strong {
+    color: var(--text);
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.payment-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: #0b0b0e;
+}
+
+.payment-logo {
+    min-width: 64px;
+    height: 40px;
+    padding: 0 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line-strong);
+    background: #050506;
+    color: var(--pink);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.payment-card h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.payment-card p {
+    color: var(--muted-2);
+    font-size: 0.62rem;
+    line-height: 1.5;
+}
+
+.faq {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+}
+
+.faq .acc {
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.faq .acc summary {
+    padding: 20px 0;
+    font-size: 0.68rem;
+}
+
+.returns-box {
+    padding: 30px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+}
+
+.returns-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.returns-box p {
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.returns-box ul {
+    list-style: none;
+    display: grid;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.returns-box li {
+    display: flex;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.73rem;
+    line-height: 1.6;
+}
+
+.returns-box li::before {
+    content: "+";
+    color: var(--pink);
+    font-weight: 700;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+    padding: clamp(56px, 7vw, 84px) 0 30px;
+    background: #040405;
+    border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    padding-bottom: 46px;
+}
+
+.footer-brand .logo {
+    margin-bottom: 18px;
+}
+
+.footer-brand .logo-text {
+    font-size: 0.9rem;
+}
+
+.footer-brand p {
+    max-width: 300px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.8;
+}
+
+.footer-tagline {
+    margin-top: 18px;
+    color: var(--muted-2);
+    font-size: 0.54rem;
+    letter-spacing: 0.2em;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+.footer-col h3 {
+    color: var(--text);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.footer-col a,
+.footer-col button {
+    display: block;
+    width: fit-content;
+    margin-bottom: 10px;
+    border: 0;
+    background: none;
+    padding: 0;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-align: left;
+    text-decoration: none;
+    transition: color 0.2s, padding-left 0.25s;
+}
+
+.footer-col a:hover,
+.footer-col button:hover {
+    color: var(--pink);
+    padding-left: 4px;
+}
+
+.footer-contact-note {
+    margin-top: 14px;
+    color: var(--muted-2);
+    font-size: 0.6rem;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding-top: 22px;
+    border-top: 1px solid #111114;
+    color: var(--muted-2);
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.footer-bottom span:last-child {
+    color: var(--muted);
+}
+
+/* ============================================================
+   CART
+   ============================================================ */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1060;
+    width: 420px;
+    max-width: 92vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: #0a0a0c;
+    border-left: 1px solid var(--line-strong);
+    box-shadow: -30px 0 80px rgba(0, 0, 0, 0.65);
+    transform: translateX(102%);
+    visibility: hidden;
+    transition: transform 0.5s var(--ease), visibility 0.5s;
+}
+
+.cart-sidebar.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.cart-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--line);
+    flex: none;
+}
+
+.cart-head .eyebrow {
+    margin-bottom: 7px;
+    font-size: 0.52rem;
+}
+
+.cart-head h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.cart-head-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    border-radius: 20px;
+    background: rgba(255, 10, 120, 0.16);
+    border: 1px solid var(--pink-line);
+    color: var(--pink);
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    transition: color 0.2s, border-color 0.2s, transform 0.3s;
+}
+
+.icon-btn:hover {
+    color: var(--pink);
+    border-color: var(--pink-line);
+    transform: rotate(90deg);
+}
+
+.icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.ship-bar {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--line);
+    background: #0c0c0f;
+    flex: none;
+}
+
+.ship-track {
+    width: 100%;
+    height: 2px;
+    background: #232329;
+    margin-bottom: 9px;
+    overflow: hidden;
+}
+
+.ship-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink), var(--pink-soft));
+    box-shadow: 0 0 10px rgba(255, 10, 120, 0.7);
+    transition: width 0.5s var(--ease);
+}
+
+.ship-text {
+    color: var(--muted);
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+}
+
+.ship-text strong {
+    color: var(--pink);
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex: 1;
+    min-height: 280px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.7;
+}
+
+.cart-empty svg {
+    width: 46px;
+    height: 46px;
+    color: var(--muted-2);
+}
+
+.cart-empty strong {
+    display: block;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.cart-empty .btn {
+    margin-top: 4px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr) auto;
+    gap: 13px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.cart-item:first-child {
+    padding-top: 4px;
+}
+
+.cart-thumb {
+    width: 74px;
+    height: 84px;
+    object-fit: cover;
+    background: #e9e6e1;
+    border: 1px solid var(--line);
+}
+
+.cart-item-main {
+    min-width: 0;
+}
+
+.cart-item-name {
+    display: block;
+    color: var(--text);
+    font-size: 0.69rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+}
+
+.cart-item-name:hover {
+    color: var(--pink);
+}
+
+.cart-item-meta {
+    color: var(--muted-2);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+}
+
+.cart-qty {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+}
+
+.cart-qty button {
+    width: 26px;
+    height: 26px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1;
+    transition: color 0.2s, background 0.2s;
+}
+
+.cart-qty button:hover {
+    color: var(--pink);
+    background: rgba(255, 10, 120, 0.06);
+}
+
+.cart-qty span {
+    min-width: 26px;
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+.cart-item-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cart-item-price {
+    color: var(--text);
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.cart-remove {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    color: var(--muted-2);
+    transition: color 0.2s;
+}
+
+.cart-remove:hover {
+    color: var(--pink);
+}
+
+.cart-remove svg {
+    width: 14px;
+    height: 14px;
+}
+
+.cart-foot {
+    padding: 18px 24px 22px;
+    border-top: 1px solid var(--line);
+    background: #09090b;
+    flex: none;
+}
+
+.cart-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 5px;
+}
+
+.cart-line span {
+    color: var(--muted);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.cart-line strong {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.cart-note {
+    color: var(--muted-2);
+    font-size: 0.55rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.cart-continue {
+    display: block;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.cart-continue:hover {
+    color: var(--pink);
+}
+
+/* ============================================================
+   MODALS / CHECKOUT
+   ============================================================ */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s, visibility 0.35s;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 660px;
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
+    padding: 38px;
+    background: #0b0b0e;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+    transform: translateY(18px) scale(0.985);
+    transition: transform 0.4s var(--ease);
+}
+
+.modal.active .modal-panel {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+}
+
+.modal-panel h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    text-transform: uppercase;
+    margin: 10px 0 6px;
+}
+
+.modal-sub {
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.checkout-summary {
+    padding: 14px 16px;
+    margin-bottom: 24px;
+    border-left: 2px solid var(--pink);
+    background: #111114;
+}
+
+.sum-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px 0;
+    color: var(--muted);
+    font-size: 0.66rem;
+    line-height: 1.5;
+}
+
+.sum-line strong {
+    color: var(--text);
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.sum-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 9px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    color: var(--text);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.sum-total strong {
+    color: var(--pink);
+    font-size: 1.05rem;
+}
+
+.checkout-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field--full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    color: var(--muted);
+    font-size: 0.56rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    background: #111114;
+    color: var(--text);
+    font-size: 0.74rem;
+    transition: border-color 0.25s, background 0.25s;
+    border-radius: 0;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 72px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--pink);
+    background: #131318;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--muted-2);
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.pay-option {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.pay-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.pay-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    background: #111114;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+.pay-logo {
+    color: var(--muted);
+    font-size: 0.49rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    transition: color 0.25s;
+}
+
+.pay-name {
+    color: var(--text);
+    font-size: 0.6rem;
+    line-height: 1.35;
+}
+
+.pay-note {
+    color: var(--muted-2);
+    font-size: 0.5rem;
+    line-height: 1.4;
+}
+
+.pay-option input:checked + .pay-card {
+    border-color: var(--pink);
+    background: rgba(255, 10, 120, 0.07);
+    box-shadow: 0 0 18px rgba(255, 10, 120, 0.14);
+}
+
+.pay-option input:checked + .pay-card .pay-logo {
+    color: var(--pink);
+}
+
+.checkout-form .btn[type="submit"] {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+}
+
+.checkout-success {
+    text-align: center;
+    padding: 22px 0 8px;
+}
+
+.success-mark {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    background: rgba(255, 10, 120, 0.08);
+    box-shadow: 0 0 30px rgba(255, 10, 120, 0.25);
+}
+
+.success-mark svg {
+    width: 26px;
+    height: 26px;
+}
+
+.checkout-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.checkout-success p {
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.75;
+    max-width: 420px;
+    margin: 0 auto 14px;
+}
+
+.order-number {
+    display: inline-block;
+    margin: 4px 0 18px;
+    padding: 8px 14px;
+    border: 1px solid var(--pink-line);
+    color: var(--pink);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+}
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+/* size guide */
+.size-modal {
+    max-width: 760px;
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.size-table caption {
+    text-align: left;
+    color: var(--pink);
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 14px 0 8px;
+}
+
+.size-table th,
+.size-table td {
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    font-size: 0.67rem;
+}
+
+.size-table th {
+    color: var(--muted-2);
+    font-size: 0.52rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.size-table td {
+    color: var(--muted);
+}
+
+.size-table td:first-child {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.size-table tr:hover td {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.fit-alert {
+    padding: 14px 16px;
+    margin: 16px 0 4px;
+    border-left: 2px solid var(--pink);
+    background: rgba(255, 10, 120, 0.045);
+    color: var(--muted);
+    font-size: 0.7rem;
+    line-height: 1.7;
+}
+
+.fit-alert strong {
+    color: var(--text);
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+
+.toast {
+    position: fixed;
+    left: 24px;
+    right: auto;
+    bottom: 24px;
+    z-index: 1300;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: min(390px, calc(100vw - 40px));
+    padding: 14px 18px;
+    background: #101014;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+    color: var(--text);
+    font-size: 0.7rem;
+    line-height: 1.5;
+    transform: translateY(140%);
+    opacity: 0;
+    transition: transform 0.45s var(--ease), opacity 0.3s;
+}
+
+.toast.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex: none;
+}
+
+.toast.success .toast-icon {
+    background: #00e676;
+    box-shadow: 0 0 10px #00e676;
+}
+
+.toast.error .toast-icon {
+    background: #ff1744;
+    box-shadow: 0 0 10px #ff1744;
+}
+
+.toast.info .toast-icon {
+    background: var(--pink);
+    box-shadow: 0 0 10px var(--pink);
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+
+html.js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+html.js .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+html.js .reveal[data-delay="1"] { transition-delay: 0.08s; }
+html.js .reveal[data-delay="2"] { transition-delay: 0.16s; }
+html.js .reveal[data-delay="3"] { transition-delay: 0.24s; }
+html.js .reveal[data-delay="4"] { transition-delay: 0.32s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1160px) {
+    .main-nav {
+        gap: 16px;
+    }
+    .header-cta {
+        display: none;
+    }
+    .hero-title {
+        font-size: clamp(3rem, 7vw, 6rem);
+    }
+    .products-grid--four {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 980px) {
+    :root {
+        --header-h: 72px;
+    }
+    .site-header {
+        height: var(--header-h);
+    }
+    .site-header.scrolled {
+        height: 62px;
+    }
+    .main-nav {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+    .hero-home {
+        min-height: auto;
+        padding: 126px 0 64px;
+    }
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 46px;
+    }
+    .hero-copy {
+        max-width: none;
+    }
+    .hero-visual {
+        max-width: 560px;
+        width: 100%;
+        justify-self: center;
+    }
+    .hero-side {
+        display: none;
+    }
+    .hero-sticker {
+        left: -12px;
+        bottom: 24px;
+    }
+    .editorial {
+        grid-template-columns: 1fr;
+    }
+    .editorial-media {
+        min-height: 500px;
+        max-width: 620px;
+        width: 100%;
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .feature:nth-child(3) {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+    }
+    .feature:nth-child(4) {
+        border-top: 1px solid var(--line);
+    }
+    .product-layout {
+        grid-template-columns: 1fr;
+    }
+    .product-info {
+        position: static;
+    }
+    .manifesto {
+        grid-template-columns: 1fr;
+    }
+    .manifesto-media {
+        max-width: 580px;
+    }
+    .values-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .process {
+        grid-template-columns: 1fr 1fr;
+    }
+    .process-step:nth-child(2) {
+        border-right: 0;
+    }
+    .process-step:nth-child(3),
+    .process-step:nth-child(4) {
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+        margin-top: 24px;
+    }
+    .gallery-collage {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+    .gallery-collage figure:nth-child(3) {
+        display: none;
+    }
+    .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+    }
+    .footer-col--contacts {
+        grid-column: 1 / -1;
+    }
+    .info-cards,
+    .payment-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .soon-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .timeline {
+        grid-template-columns: 1fr 1fr;
+    }
+    .timeline-step:nth-child(2) {
+        border-right: 0;
+    }
+    .timeline-step:nth-child(3),
+    .timeline-step:nth-child(4) {
+        border-top: 1px solid var(--line);
+        margin-top: 22px;
+        padding-top: 22px;
+    }
+}
+
+@media (max-width: 720px) {
+    .section {
+        padding: 62px 0;
+    }
+    .site-header {
+        padding: 0 18px;
+        gap: 12px;
+    }
+    .logo-text {
+        font-size: 0.68rem;
+    }
+    .logo-mark {
+        width: 34px;
+        height: 34px;
+    }
+    .cart-btn,
+    .burger {
+        width: 42px;
+        height: 42px;
+    }
+    .hero-title {
+        font-size: clamp(2.35rem, 10.5vw, 3.6rem);
+        margin: 20px 0 20px;
+    }
+    .hero-sub {
+        font-size: 0.82rem;
+    }
+    .hero-actions {
+        gap: 9px;
+    }
+    .hero-actions .btn {
+        flex: 1 1 100%;
+    }
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 18px 0;
+        margin-top: 38px;
+    }
+    .hero-stats > div {
+        flex: 1 1 33.333%;
+        padding: 0 14px;
+    }
+    .hero-stats > div:first-child {
+        padding-left: 0;
+    }
+    .hero-stats strong {
+        font-size: 1.35rem;
+    }
+    .hero-stats span {
+        font-size: 0.5rem;
+    }
+    .hero-sticker {
+        width: 86px;
+        height: 86px;
+        font-size: 0.43rem;
+        left: -4px;
+        bottom: 14px;
+    }
+    .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+    .section-title {
+        font-size: clamp(1.9rem, 8vw, 2.8rem);
+    }
+    .products-grid,
+    .products-grid--four {
+        grid-template-columns: 1fr;
+    }
+    .product-card:hover {
+        transform: none;
+    }
+    .features {
+        grid-template-columns: 1fr;
+    }
+    .feature {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding: 24px 20px;
+    }
+    .feature:first-child {
+        border-top: 0;
+    }
+    .editorial-media {
+        min-height: 380px;
+    }
+    .e-stamp {
+        top: 12px;
+        padding: 11px 9px;
+    }
+    .teaser-grid {
+        grid-template-columns: 1fr;
+    }
+    .teaser-card {
+        aspect-ratio: 1.05;
+    }
+    .teaser-actions .btn {
+        width: 100%;
+    }
+    .page-hero {
+        padding: calc(var(--header-h) + 58px) 0 44px;
+    }
+    .page-hero::before {
+        top: 90px;
+        font-size: 24vw;
+    }
+    .page-title {
+        font-size: clamp(2.9rem, 15vw, 5rem);
+    }
+    .page-hero__row {
+        gap: 22px;
+    }
+    .page-meta {
+        gap: 16px;
+    }
+    .catalog-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .catalog-filters {
+        gap: 5px;
+    }
+    .filter-btn {
+        padding: 7px 9px;
+        font-size: 0.55rem;
+    }
+    .catalog-note {
+        align-items: flex-start;
+    }
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .gallery-thumbs {
+        flex-direction: row;
+        order: 2;
+    }
+    .gallery-thumb {
+        width: 68px;
+        height: 74px;
+    }
+    .product-actions {
+        flex-direction: column;
+    }
+    .qty {
+        justify-content: space-between;
+    }
+    .qty span {
+        flex: 1;
+    }
+    .product-title {
+        font-size: clamp(2rem, 9vw, 2.9rem);
+    }
+    .product-stock {
+        margin-left: 0;
+        width: 100%;
+    }
+    .countdown {
+        max-width: none;
+    }
+    .waitlist {
+        flex-direction: column;
+        border: 0;
+        background: transparent;
+        gap: 8px;
+    }
+    .waitlist input {
+        border: 1px solid var(--line-strong);
+        background: #0d0d10;
+    }
+    .waitlist button {
+        width: 100%;
+    }
+    .soon-grid {
+        grid-template-columns: 1fr;
+    }
+    .timeline {
+        grid-template-columns: 1fr;
+    }
+    .timeline-step {
+        border-right: 0;
+        border-top: 1px solid var(--line);
+        padding: 20px 0 0;
+    }
+    .timeline-step:first-child {
+        border-top: 0;
+    }
+    .timeline-step:nth-child(3),
+    .timeline-step:nth-child(4) {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    .process {
+        grid-template-columns: 1fr;
+    }
+    .process-step {
+        border-right: 0;
+        border-top: 1px solid var(--line);
+        padding: 20px 0 0;
+    }
+    .process-step:first-child {
+        border-top: 0;
+        padding-top: 0;
+    }
+    .process-step:nth-child(3),
+    .process-step:nth-child(4) {
+        margin-top: 0;
+    }
+    .gallery-collage {
+        grid-template-columns: 1fr;
+    }
+    .gallery-collage figure:nth-child(2),
+    .gallery-collage figure:nth-child(3) {
+        margin-top: 0;
+        display: block;
+    }
+    .contact-band {
+        padding: 24px 20px;
+    }
+    .contact-band__actions {
+        width: 100%;
+    }
+    .contact-band__actions .btn {
+        flex: 1;
+    }
+    .info-cards,
+    .payment-grid {
+        grid-template-columns: 1fr;
+    }
+    .payment-card {
+        padding: 15px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 22px;
+    }
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+    .footer-col--contacts {
+        grid-column: 1 / -1;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .cart-sidebar {
+        max-width: 100vw;
+        width: 100vw;
+    }
+    .cart-head,
+    .ship-bar,
+    .cart-items,
+    .cart-foot {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .modal {
+        padding: 10px;
+    }
+    .modal-panel {
+        padding: 28px 20px;
+        max-height: 94vh;
+        max-height: 94dvh;
+    }
+    .checkout-form {
+        grid-template-columns: 1fr;
+    }
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
+    .pay-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    .pay-note {
+        margin-left: auto;
+        text-align: right;
+    }
+    .toast {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        max-width: none;
+    }
+    body.cart-open .toast {
+        bottom: 200px;
+    }
+    .size-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    html.js .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+    </style>
+</head>
+<body data-page="catalog">
+
+<header class="site-header">
+    <a class="logo" href="index.html" aria-label="Влюблённый Дьявол — на главную">
+        <span class="logo-mark"><svg viewBox="0 0 40 40" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 34S7 26 7 17.5A6.5 6.5 0 0 1 20 14a6.5 6.5 0 0 1 13 3.5C33 26 20 34 20 34Z"></path><path d="m12 12-4-7 7 3M28 12l4-7-7 3"></path></svg></span>
+        <span class="logo-text">Влюблённый<br><span>Дьявол</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+        <a href="index.html" data-nav="home">Главная</a>
+        <a href="catalog.html" data-nav="catalog">Каталог</a>
+        <a href="preorder.html" data-nav="preorder">Предзаказ</a>
+        <a href="about.html" data-nav="about">О бренде</a>
+        <a href="delivery.html" data-nav="delivery">Доставка</a>
+    </nav>
+    <div class="header-actions">
+        <a class="header-cta" href="catalog.html">В каталог</a>
+        <button class="cart-btn" type="button" data-open-cart aria-label="Открыть корзину, товаров: 0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1"></circle><circle cx="19" cy="20" r="1"></circle><path d="M2 3h3l2.4 12.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 7H6"></path></svg>
+            <span class="cart-count" id="cartCount" hidden aria-hidden="true">0</span>
+        </button>
+        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+        </button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__head">
+        <a class="logo" href="index.html">
+            <span class="logo-mark"><svg viewBox="0 0 40 40" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 34S7 26 7 17.5A6.5 6.5 0 0 1 20 14a6.5 6.5 0 0 1 13 3.5C33 26 20 34 20 34Z"></path><path d="m12 12-4-7 7 3M28 12l4-7-7 3"></path></svg></span>
+            <span class="logo-text">Влюблённый<br><span>Дьявол</span></span>
+        </a>
+        <button class="icon-btn" type="button" data-close-menu aria-label="Закрыть меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+        <a href="index.html" data-nav="home"><small>01</small>Главная</a>
+        <a href="catalog.html" data-nav="catalog"><small>02</small>Каталог</a>
+        <a href="preorder.html" data-nav="preorder"><small>03</small>Предзаказ</a>
+        <a href="about.html" data-nav="about"><small>04</small>О бренде</a>
+        <a href="delivery.html" data-nav="delivery"><small>05</small>Доставка</a>
+    </nav>
+    <div class="mobile-menu__foot">
+        <a href="https://t.me/bevilonlove666" target="_blank" rel="noopener noreferrer">Telegram-канал</a>
+        <a href="https://t.me/loved_devil_help_bot" target="_blank" rel="noopener noreferrer">Поддержка / менеджер</a>
+        <span>Designed in hell. Made in Russia.</span>
+    </div>
+</div>
+
+<main>
+
+<section class="page-hero" data-word="SHOP">
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Главная</a><span class="sep">/</span><span>Каталог</span>
+        </div>
+        <p class="eyebrow">DROP 001 / 06 ITEMS</p>
+        <h1 class="page-title">Каталог</h1>
+        <div class="page-hero__row">
+            <p class="page-hero__desc">Шесть вещей, которые составляют капсулу: четыре худи и две пары карго. Всё в оверсайз-посадке, unisex, с ручной обработкой.</p>
+            <div class="page-meta">
+                <div><strong>06</strong>моделей</div>
+                <div><strong>120</strong>экземпляров</div>
+                <div><strong>2–7</strong>дней доставка</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section--tight">
+    <div class="container">
+        <div class="catalog-note">
+            <span><strong>Оверсайз-посадка у всех моделей.</strong> Если сомневаетесь с размером — откройте размерную сетку или напишите менеджеру. Обмен размера — 14 дней.</span>
+            <button class="btn btn-ghost btn--sm" type="button" data-open-size><span>Размерная сетка</span></button>
+        </div>
+        <div class="catalog-toolbar">
+            <div class="catalog-filters" role="group" aria-label="Фильтр по категориям">
+                <button class="filter-btn active" type="button" data-filter="all">Все <sup>06</sup></button>
+                <button class="filter-btn" type="button" data-filter="hoodie">Худи и олимпийки <sup>04</sup></button>
+                <button class="filter-btn" type="button" data-filter="pants">Брюки <sup>02</sup></button>
+            </div>
+            <div class="catalog-count">Показано <strong id="catalogVisibleCount">06</strong> из 06</div>
+        </div>
+        <div class="products-grid" id="catalogGrid">
+<article class="product-card" data-card data-id="1" data-cat="hoodie">
+    <div class="card-media">
+        <a class="media-link" href="product.html?id=1" aria-label="PIKMI LADY / BLACK">
+            <img class="img-front" src="../images/tovar_1_front.png" alt="PIKMI LADY / BLACK — вид спереди">
+            <img class="img-back" src="../images/tovar_1_back.png" alt="PIKMI LADY / BLACK — вид сзади">
+        </a>
+        <span class="card-badge">LIMITED</span>
+        <span class="card-index">01</span>
+        <div class="view-toggle">
+            <button type="button" class="active" data-side="front">Front</button>
+            <button type="button" data-side="back">Back</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-meta"><span>Флисовая олимпийка</span><span>Black / Pink</span></div>
+        <h3 class="card-title"><a href="product.html?id=1">PIKMI LADY / BLACK</a></h3>
+        <div class="card-price-row"><span class="price">5 490 ₽</span><span class="price price--old">6 990 ₽</span></div>
+        <div class="size-row" role="group" aria-label="Размер">
+            <span class="size-label">Размер</span><button type="button" class="size-chip" data-size="S">S</button><button type="button" class="size-chip active" data-size="M">M</button><button type="button" class="size-chip" data-size="L">L</button><button type="button" class="size-chip" data-size="XL">XL</button>
+        </div>
+        <div class="card-buttons">
+            <a class="btn btn-ghost btn--sm" href="product.html?id=1"><span>Подробнее</span></a>
+            <button type="button" class="btn btn-primary btn--sm" data-add="1"><span>В корзину</span></button>
+        </div>
+    </div>
+</article>
+<article class="product-card" data-card data-id="2" data-cat="hoodie">
+    <div class="card-media">
+        <a class="media-link" href="product.html?id=2" aria-label="PRIME / WHITE">
+            <img class="img-front" src="../images/tovar_2_front.png" alt="PRIME / WHITE — вид спереди">
+            <img class="img-back" src="../images/tovar_2_back.png" alt="PRIME / WHITE — вид сзади">
+        </a>
+        <span class="card-badge">LIMITED</span>
+        <span class="card-index">02</span>
+        <div class="view-toggle">
+            <button type="button" class="active" data-side="front">Front</button>
+            <button type="button" data-side="back">Back</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-meta"><span>Зип-худи</span><span>White / Burgundy</span></div>
+        <h3 class="card-title"><a href="product.html?id=2">PRIME / WHITE</a></h3>
+        <div class="card-price-row"><span class="price">6 490 ₽</span><span class="price price--old">7 990 ₽</span></div>
+        <div class="size-row" role="group" aria-label="Размер">
+            <span class="size-label">Размер</span><button type="button" class="size-chip" data-size="S">S</button><button type="button" class="size-chip active" data-size="M">M</button><button type="button" class="size-chip" data-size="L">L</button><button type="button" class="size-chip" data-size="XL">XL</button>
+        </div>
+        <div class="card-buttons">
+            <a class="btn btn-ghost btn--sm" href="product.html?id=2"><span>Подробнее</span></a>
+            <button type="button" class="btn btn-primary btn--sm" data-add="2"><span>В корзину</span></button>
+        </div>
+    </div>
+</article>
+<article class="product-card" data-card data-id="3" data-cat="hoodie">
+    <div class="card-media">
+        <a class="media-link" href="product.html?id=3" aria-label="PRIME / BLACK">
+            <img class="img-front" src="../images/tovar_3_front.png" alt="PRIME / BLACK — вид спереди">
+            <img class="img-back" src="../images/tovar_3_back.png" alt="PRIME / BLACK — вид сзади">
+        </a>
+        <span class="card-badge">LIMITED</span>
+        <span class="card-index">03</span>
+        <div class="view-toggle">
+            <button type="button" class="active" data-side="front">Front</button>
+            <button type="button" data-side="back">Back</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-meta"><span>Зип-худи</span><span>Black / Burgundy</span></div>
+        <h3 class="card-title"><a href="product.html?id=3">PRIME / BLACK</a></h3>
+        <div class="card-price-row"><span class="price">6 490 ₽</span></div>
+        <div class="size-row" role="group" aria-label="Размер">
+            <span class="size-label">Размер</span><button type="button" class="size-chip" data-size="S">S</button><button type="button" class="size-chip active" data-size="M">M</button><button type="button" class="size-chip" data-size="L">L</button><button type="button" class="size-chip" data-size="XL">XL</button>
+        </div>
+        <div class="card-buttons">
+            <a class="btn btn-ghost btn--sm" href="product.html?id=3"><span>Подробнее</span></a>
+            <button type="button" class="btn btn-primary btn--sm" data-add="3"><span>В корзину</span></button>
+        </div>
+    </div>
+</article>
+<article class="product-card" data-card data-id="4" data-cat="hoodie">
+    <div class="card-media">
+        <a class="media-link" href="product.html?id=4" aria-label="PRIME / ASH">
+            <img class="img-front" src="../images/tovar_4_front.png" alt="PRIME / ASH — вид спереди">
+            <img class="img-back" src="../images/tovar_4_back.png" alt="PRIME / ASH — вид сзади">
+        </a>
+        <span class="card-badge">LIMITED</span>
+        <span class="card-index">04</span>
+        <div class="view-toggle">
+            <button type="button" class="active" data-side="front">Front</button>
+            <button type="button" data-side="back">Back</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-meta"><span>Зип-худи</span><span>Ash / Black</span></div>
+        <h3 class="card-title"><a href="product.html?id=4">PRIME / ASH</a></h3>
+        <div class="card-price-row"><span class="price">6 490 ₽</span></div>
+        <div class="size-row" role="group" aria-label="Размер">
+            <span class="size-label">Размер</span><button type="button" class="size-chip" data-size="S">S</button><button type="button" class="size-chip active" data-size="M">M</button><button type="button" class="size-chip" data-size="L">L</button><button type="button" class="size-chip" data-size="XL">XL</button>
+        </div>
+        <div class="card-buttons">
+            <a class="btn btn-ghost btn--sm" href="product.html?id=4"><span>Подробнее</span></a>
+            <button type="button" class="btn btn-primary btn--sm" data-add="4"><span>В корзину</span></button>
+        </div>
+    </div>
+</article>
+<article class="product-card" data-card data-id="5" data-cat="pants">
+    <div class="card-media">
+        <a class="media-link" href="product.html?id=5" aria-label="CARGO / BURGUNDY">
+            <img class="img-front" src="../images/tovar_5_front.png" alt="CARGO / BURGUNDY — вид спереди">
+            <img class="img-back" src="../images/tovar_5_back.png" alt="CARGO / BURGUNDY — вид сзади">
+        </a>
+        <span class="card-badge">LIMITED</span>
+        <span class="card-index">05</span>
+        <div class="view-toggle">
+            <button type="button" class="active" data-side="front">Front</button>
+            <button type="button" data-side="back">Back</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-meta"><span>Карго-джоггеры</span><span>Burgundy / Black</span></div>
+        <h3 class="card-title"><a href="product.html?id=5">CARGO / BURGUNDY</a></h3>
+        <div class="card-price-row"><span class="price">5 990 ₽</span></div>
+        <div class="size-row" role="group" aria-label="Размер">
+            <span class="size-label">Размер</span><button type="button" class="size-chip" data-size="S">S</button><button type="button" class="size-chip active" data-size="M">M</button><button type="button" class="size-chip" data-size="L">L</button><button type="button" class="size-chip" data-size="XL">XL</button>
+        </div>
+        <div class="card-buttons">
+            <a class="btn btn-ghost btn--sm" href="product.html?id=5"><span>Подробнее</span></a>
+            <button type="button" class="btn btn-primary btn--sm" data-add="5"><span>В корзину</span></button>
+        </div>
+    </div>
+</article>
+<article class="product-card" data-card data-id="6" data-cat="pants">
+    <div class="card-media">
+        <a class="media-link" href="product.html?id=6" aria-label="CARGO / BLACK">
+            <img class="img-front" src="../images/tovar_6_front.png" alt="CARGO / BLACK — вид спереди">
+            <img class="img-back" src="../images/tovar_6_back.png" alt="CARGO / BLACK — вид сзади">
+        </a>
+        <span class="card-badge">LIMITED</span>
+        <span class="card-index">06</span>
+        <div class="view-toggle">
+            <button type="button" class="active" data-side="front">Front</button>
+            <button type="button" data-side="back">Back</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-meta"><span>Карго-джоггеры</span><span>Black / Red</span></div>
+        <h3 class="card-title"><a href="product.html?id=6">CARGO / BLACK</a></h3>
+        <div class="card-price-row"><span class="price">6 490 ₽</span></div>
+        <div class="size-row" role="group" aria-label="Размер">
+            <span class="size-label">Размер</span><button type="button" class="size-chip" data-size="S">S</button><button type="button" class="size-chip active" data-size="M">M</button><button type="button" class="size-chip" data-size="L">L</button><button type="button" class="size-chip" data-size="XL">XL</button>
+        </div>
+        <div class="card-buttons">
+            <a class="btn btn-ghost btn--sm" href="product.html?id=6"><span>Подробнее</span></a>
+            <button type="button" class="btn btn-primary btn--sm" data-add="6"><span>В корзину</span></button>
+        </div>
+    </div>
+</article></div>
+    </div>
+</section>
+
+<section class="section section--line">
+    <div class="container">
+        <div class="contact-band reveal">
+            <div>
+                <h2>Нужен другой размер?</h2>
+                <p>Напиши менеджеру — обсудим индивидуальный пошив или подберём модель под твой силуэт.</p>
+            </div>
+            <div class="contact-band__actions">
+                <a class="btn btn-primary" href="https://t.me/loved_devil_help_bot" target="_blank" rel="noopener noreferrer"><span>Написать менеджеру</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 3-9.2 18-2.3-7.5L2 11.2 21 3Z"></path><path d="m9.5 13.5 4.2-4.2"></path></svg></a>
+                <button class="btn btn-ghost" type="button" data-open-size><span>Размерная сетка</span></button>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a class="logo" href="index.html">
+                    <span class="logo-mark"><svg viewBox="0 0 40 40" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 34S7 26 7 17.5A6.5 6.5 0 0 1 20 14a6.5 6.5 0 0 1 13 3.5C33 26 20 34 20 34Z"></path><path d="m12 12-4-7 7 3M28 12l4-7-7 3"></path></svg></span>
+                    <span class="logo-text">Влюблённый<br><span>Дьявол</span></span>
+                </a>
+                <p>Независимый streetwear-бренд о нежности с шипами. Малые тиражи, тяжёлые ткани и ручная обработка.</p>
+                <p class="footer-tagline">Designed in hell.<br>Made in Russia.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Навигация</h3>
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="preorder.html">Предзаказ</a>
+                <a href="about.html">О бренде</a>
+                <a href="../one/">Одностраничная версия</a>
+                <a href="../visitka/">Визитка бренда</a>
+                <a href="delivery.html">Доставка и оплата</a>
+            </div>
+            <div class="footer-col">
+                <h3>Помощь</h3>
+                <button type="button" data-open-size>Размерная сетка</button>
+                <a href="delivery.html#order">Как оформить заказ</a>
+                <a href="delivery.html#returns">Возврат и обмен</a>
+                <a href="delivery.html#faq">Частые вопросы</a>
+                <a href="about.html#contacts">Контакты</a>
+            </div>
+            <div class="footer-col footer-col--contacts">
+                <h3>Контакты</h3>
+                <a href="https://t.me/bevilonlove666" target="_blank" rel="noopener noreferrer">Telegram-канал</a>
+                <a href="https://t.me/loved_devil_help_bot" target="_blank" rel="noopener noreferrer">Поддержка / менеджер</a>
+                <p class="footer-contact-note">Ежедневно 11:00–21:00 МСК.<br>Отвечаем в течение часа.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Влюблённый Дьявол. Limited streetwear.</span>
+            <span>Designed in hell. Made in Russia.</span>
+        </div>
+    </div>
+</footer>
+
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-sidebar" id="cartSidebar" aria-label="Корзина">
+    <div class="cart-head">
+        <div>
+            <p class="eyebrow">Your bag</p>
+            <h3>Корзина <span class="cart-head-count" id="cartHeadCount">0</span></h3>
+        </div>
+        <button class="icon-btn" type="button" data-close-cart aria-label="Закрыть корзину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+    </div>
+    <div class="ship-bar">
+        <div class="ship-track"><span class="ship-fill" id="shipFill"></span></div>
+        <p class="ship-text" id="shipText">Бесплатная доставка от <strong>10 000 ₽</strong></p>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+        <div class="cart-line"><span>Итого</span><strong id="cartTotal">0 ₽</strong></div>
+        <p class="cart-note">Доставка и оплата — на следующем шаге. Отправка в день заказа.</p>
+        <button class="btn btn-primary btn--full" type="button" data-open-checkout><span>Оформить заказ</span></button>
+        <a class="cart-continue" href="catalog.html">Продолжить покупки</a>
+    </div>
+</aside>
+
+
+<div class="modal" id="checkoutModal">
+    <div class="modal-panel">
+        <button class="icon-btn modal-close" type="button" data-close-checkout aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+        <div id="checkoutFormWrap">
+            <p class="eyebrow">Checkout</p>
+            <h2>Оформление</h2>
+            <p class="modal-sub">Оставь контакты — менеджер подтвердит заказ и пришлёт реквизиты в Telegram.</p>
+            <div class="checkout-summary" id="checkoutSummary"></div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="field">
+                    <label for="custName">Имя</label>
+                    <input id="custName" name="name" required placeholder="Как к вам обращаться" autocomplete="name">
+                </div>
+                <div class="field">
+                    <label for="custPhone">Телефон</label>
+                    <input id="custPhone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__" autocomplete="tel">
+                </div>
+                <div class="field">
+                    <label for="custTg">Telegram</label>
+                    <input id="custTg" name="telegram" required placeholder="@username">
+                </div>
+                <div class="field">
+                    <label for="custCity">Город</label>
+                    <input id="custCity" name="city" required placeholder="Москва" autocomplete="address-level2">
+                </div>
+                <div class="field field--full">
+                    <label for="custDelivery">Доставка</label>
+                    <select id="custDelivery" name="delivery" required>
+                        <option value="" disabled selected>Выберите способ</option>
+                        <option value="СДЭК — пункт выдачи">СДЭК — пункт выдачи (2–5 дней)</option>
+                        <option value="СДЭК — курьер до двери">СДЭК — курьер до двери (2–5 дней)</option>
+                        <option value="Почта России">Почта России (5–10 дней)</option>
+                        <option value="Самовывоз, Санкт-Петербург">Самовывоз, Санкт-Петербург</option>
+                    </select>
+                </div>
+                <div class="field field--full">
+                    <label>Оплата</label>
+                    <div class="payment-options">
+                        <label class="pay-option">
+                            <input type="radio" name="payment" value="СБП" checked>
+                            <span class="pay-card">
+                                <span class="pay-logo">СБП</span>
+                                <span class="pay-name">Система быстрых платежей</span>
+                                <span class="pay-note">0% комиссии</span>
+                            </span>
+                        </label>
+                        <label class="pay-option">
+                            <input type="radio" name="payment" value="Банковская карта">
+                            <span class="pay-card">
+                                <span class="pay-logo">МИР / VISA / MC</span>
+                                <span class="pay-name">Банковская карта</span>
+                                <span class="pay-note">Без комиссии</span>
+                            </span>
+                        </label>
+                        <label class="pay-option">
+                            <input type="radio" name="payment" value="СберПэй / Т-Пэй">
+                            <span class="pay-card">
+                                <span class="pay-logo">SBER · T-PAY</span>
+                                <span class="pay-name">СберПэй / Т-Пэй</span>
+                                <span class="pay-note">Оплата в один клик</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="field field--full">
+                    <label for="custComment">Комментарий</label>
+                    <textarea id="custComment" name="comment" placeholder="Пожелания по доставке или заказу"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary"><span>Подтвердить заказ</span></button>
+            </form>
+        </div>
+        <div class="checkout-success" id="checkoutSuccess" hidden>
+            <div class="success-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"></path></svg></div>
+            <h3>Заказ принят</h3>
+            <p>Заказ сохранён в этом браузере. Скопируй состав и отправь менеджеру — подтвердим наличие, доставку и оплату.</p>
+            <span class="order-number" id="orderNumber">DD-000000</span>
+            <div class="success-actions">
+                <button class="btn btn-ghost btn--sm" type="button" data-copy-order><span>Скопировать заказ</span></button>
+                <a class="btn btn-primary btn--sm" href="https://t.me/loved_devil_help_bot" target="_blank" rel="noopener noreferrer"><span>Написать менеджеру</span></a>
+                <button class="btn btn-ghost btn--sm" type="button" data-close-checkout><span>Закрыть</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="sizeModal">
+    <div class="modal-panel size-modal">
+        <button class="icon-btn modal-close" type="button" data-close-size aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+        <p class="eyebrow">Fit guide</p>
+        <h2>Размерная сетка</h2>
+        <p class="modal-sub">Все мерки указаны в сантиметрах. Измерения сняты с изделия, разложенного на плоскости.</p>
+        <div class="fit-alert"><strong>Оверсайз-посадка.</strong> Рекомендация по росту: S — до 170 см, M — 171–180 см, L — 181–190 см, XL — 190+ см. Если хочешь силуэт плотнее — бери на размер меньше.</div>
+        <table class="size-table">
+            <caption>Верх / худи и олимпийки</caption>
+            <thead>
+                <tr><th>Размер</th><th>Грудь</th><th>Длина</th><th>Рукав</th><th>Рост</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>S</td><td>112</td><td>70</td><td>62</td><td>до 170</td></tr>
+                <tr><td>M</td><td>118</td><td>72</td><td>64</td><td>171–180</td></tr>
+                <tr><td>L</td><td>124</td><td>74</td><td>66</td><td>181–190</td></tr>
+                <tr><td>XL</td><td>130</td><td>76</td><td>68</td><td>190+</td></tr>
+            </tbody>
+        </table>
+        <table class="size-table">
+            <caption>Низ / карго-джоггеры</caption>
+            <thead>
+                <tr><th>Размер</th><th>Пояс</th><th>Бёдра</th><th>Длина</th><th>Рост</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>S</td><td>68–78</td><td>112</td><td>100</td><td>до 170</td></tr>
+                <tr><td>M</td><td>72–84</td><td>118</td><td>102</td><td>171–180</td></tr>
+                <tr><td>L</td><td>78–90</td><td>124</td><td>104</td><td>181–190</td></tr>
+                <tr><td>XL</td><td>84–98</td><td>130</td><td>106</td><td>190+</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="toast" id="statusToast" role="status" aria-live="polite">
+    <span class="toast-icon"></span>
+    <span id="toastMessage">Уведомление</span>
+</div>
+
+<script>
+/* ============================================================
+   ВЛЮБЛЁННЫЙ ДЬЯВОЛ — shared storefront logic
+   ============================================================ */
+
+const PRODUCTS = {"1":{"id":1,"name":"PIKMI LADY / BLACK","cat":"hoodie","catLabel":"Флисовая олимпийка","color":"Black / Pink","fabric":"Флис 380 г/м²","price":5490,"oldPrice":6990,"badge":"LIMITED","stock":14,"desc":"Флисовая олимпийка на молнии с высоким воротом-стойкой. Вышитый логотип PIKMI LADY розовым по чёрному, спущенная линия плеча и мягкий начёс внутри. Тёплая база для холодных вечеров.","fit":"Оверсайз / unisex. На фото — размер M, рост 178 см. Если нужен более плотный силуэт — берите на размер меньше.","composition":"80% хлопок, 20% полиэстер. Флис 380 г/м². Вышивка. Молния YKK.","care":"Стирка при 30° наизнанку, без отбеливателя. Не сушить в машине. Гладить с изнанки.","img":"../images/tovar_1_front.png","images":[{"src":"../images/tovar_1_front.png","label":"Front","alt":"PIKMI LADY / BLACK — вид спереди"},{"src":"../images/tovar_1_back.png","label":"Back","alt":"PIKMI LADY / BLACK — вид сзади"}]},"2":{"id":2,"name":"PRIME / WHITE","cat":"hoodie","catLabel":"Зип-худи","color":"White / Burgundy","fabric":"Футер 460 г/м²","price":6490,"oldPrice":7990,"badge":"LIMITED","stock":9,"desc":"Белое зип-худи с эффектом destroyed: десятки рваных отверстий, сквозь которые видна контрастная бордовая подкладка. Плотный футер 460 г/м² держит форму, а кокон-капюшон добавляет объёма.","fit":"Оверсайз / unisex. На фото — размер M, рост 178 см. Если нужен более плотный силуэт — берите на размер меньше.","composition":"80% хлопок, 20% полиэстер. Футер 460 г/м². Ручная обработка destroyed. Молния YKK.","care":"Стирка при 30° наизнанку, без отбеливателя. Не сушить в машине. Гладить с изнанки.","img":"../images/tovar_2_front.png","images":[{"src":"../images/tovar_2_front.png","label":"Front","alt":"PRIME / WHITE — вид спереди"},{"src":"../images/tovar_2_back.png","label":"Back","alt":"PRIME / WHITE — вид сзади"},{"src":"../images/tovar_2_front2.png","label":"Front 2","alt":"PRIME / WHITE — второй вид спереди"}]},"3":{"id":3,"name":"PRIME / BLACK","cat":"hoodie","catLabel":"Зип-худи","color":"Black / Burgundy","fabric":"Футер 460 г/м²","price":6490,"oldPrice":null,"badge":"LIMITED","stock":12,"desc":"Чёрное зип-худи после ручного acid wash. Глубокий чёрный с бордовыми акцентами в прорезях и принтом PRIME на груди. Рисунок потертостей уникален для каждого экземпляра.","fit":"Оверсайз / unisex. На фото — размер M, рост 178 см. Если нужен более плотный силуэт — берите на размер меньше.","composition":"80% хлопок, 20% полиэстер. Футер 460 г/м². Ручная обработка acid wash. Молния YKK.","care":"Стирка при 30° наизнанку, без отбеливателя. Не сушить в машине. Гладить с изнанки.","img":"../images/tovar_3_front.png","images":[{"src":"../images/tovar_3_front.png","label":"Front","alt":"PRIME / BLACK — вид спереди"},{"src":"../images/tovar_3_back.png","label":"Back","alt":"PRIME / BLACK — вид сзади"}]},"4":{"id":4,"name":"PRIME / ASH","cat":"hoodie","catLabel":"Зип-худи","color":"Ash / Black","fabric":"Футер 460 г/м²","price":6490,"oldPrice":null,"badge":"LIMITED","stock":11,"desc":"Тёмно-серое зип-худи с чёрным принтом PRIME. Рваные детали, бордовая подкладка и оверсайз-силуэт. Модель прошла ручную стирку для эффекта выцветшей ткани.","fit":"Оверсайз / unisex. На фото — размер M, рост 178 см. Если нужен более плотный силуэт — берите на размер меньше.","composition":"80% хлопок, 20% полиэстер. Футер 460 г/м². Ручная обработка acid wash. Молния YKK.","care":"Стирка при 30° наизнанку, без отбеливателя. Не сушить в машине. Гладить с изнанки.","img":"../images/tovar_4_front.png","images":[{"src":"../images/tovar_4_front.png","label":"Front","alt":"PRIME / ASH — вид спереди"},{"src":"../images/tovar_4_back.png","label":"Back","alt":"PRIME / ASH — вид сзади"}]},"5":{"id":5,"name":"CARGO / BURGUNDY","cat":"pants","catLabel":"Карго-джоггеры","color":"Burgundy / Black","fabric":"Футер 380 г/м²","price":5990,"oldPrice":null,"badge":"LIMITED","stock":8,"desc":"Бордовые карго-джоггеры на мягкой резинке. Рваные колени с чёрной подкладкой, крупные накладные карманы с клапанами и регулируемый пояс. Свободный крой, который держит объём.","fit":"Свободный крой / unisex. На фото — размер M, рост 178 см. Пояс регулируется шнуром.","composition":"80% хлопок, 20% полиэстер. Футер 380 г/м². Эластичный пояс, металлическая фурнитура.","care":"Стирка при 30° наизнанку, без отбеливателя. Не сушить в машине. Гладить с изнанки.","img":"../images/tovar_5_front.png","images":[{"src":"../images/tovar_5_front.png","label":"Front","alt":"CARGO / BURGUNDY — вид спереди"},{"src":"../images/tovar_5_back.png","label":"Back","alt":"CARGO / BURGUNDY — вид сзади"}]},"6":{"id":6,"name":"CARGO / BLACK","cat":"pants","catLabel":"Карго-джоггеры","color":"Black / Red","fabric":"Футер 380 г/м²","price":6490,"oldPrice":null,"badge":"LIMITED","stock":7,"desc":"Чёрные карго-джоггеры с бордовой подкладкой в прорезях. Плотный футер, регулируемый пояс, накладные карманы и свободная посадка. Сочетаются с любым худи из капсулы.","fit":"Свободный крой / unisex. На фото — размер M, рост 178 см. Пояс регулируется шнуром.","composition":"80% хлопок, 20% полиэстер. Футер 380 г/м². Эластичный пояс, металлическая фурнитура.","care":"Стирка при 30° наизнанку, без отбеливателя. Не сушить в машине. Гладить с изнанки.","img":"../images/tovar_6_front.png","images":[{"src":"../images/tovar_6_front.png","label":"Front","alt":"CARGO / BLACK — вид спереди"},{"src":"../images/tovar_6_back.png","label":"Back","alt":"CARGO / BLACK — вид сзади"}]}};
+
+const CART_KEY = 'devil_cart_v2';
+const ORDERS_KEY = 'devil_orders_v2';
+const WAITLIST_KEY = 'devil_waitlist_v2';
+const FREE_SHIPPING = 10000;
+
+let cart = readStorage(CART_KEY, []);
+if (!Array.isArray(cart)) cart = [];
+
+let productQty = 1;
+let toastTimer = null;
+let lastOrderText = '';
+
+/* ------------------------------------------------------------
+   storage / helpers
+   ------------------------------------------------------------ */
+
+function readStorage(key, fallback) {
+    try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return fallback;
+        return JSON.parse(raw);
+    } catch (error) {
+        return fallback;
+    }
+}
+
+function writeStorage(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        /* file:// / private mode — the cart still works in memory */
+    }
+}
+
+function formatPrice(value) {
+    return Number(value || 0).toLocaleString('ru-RU') + ' ₽';
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function getProduct(id) {
+    return PRODUCTS[String(id)] || null;
+}
+
+function pad2(value) {
+    return String(value).padStart(2, '0');
+}
+
+function saveCart() {
+    writeStorage(CART_KEY, cart);
+}
+
+/* ------------------------------------------------------------
+   toasts
+   ------------------------------------------------------------ */
+
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('statusToast');
+    const text = document.getElementById('toastMessage');
+    if (!toast || !text) return;
+
+    text.textContent = message;
+    toast.className = 'toast ' + type;
+    void toast.offsetWidth;
+    toast.classList.add('active');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('active');
+    }, 4000);
+}
+
+/* ------------------------------------------------------------
+   cart
+   ------------------------------------------------------------ */
+
+function cartTotals() {
+    return cart.reduce((acc, item) => {
+        acc.qty += Number(item.qty) || 0;
+        acc.sum += (Number(item.qty) || 0) * (Number(item.price) || 0);
+        return acc;
+    }, { qty: 0, sum: 0 });
+}
+
+function renderCart() {
+    const itemsEl = document.getElementById('cartItems');
+    const totalEl = document.getElementById('cartTotal');
+    const countEl = document.getElementById('cartCount');
+    const headCountEl = document.getElementById('cartHeadCount');
+    const shipFill = document.getElementById('shipFill');
+    const shipText = document.getElementById('shipText');
+
+    if (!itemsEl) return;
+
+    const totals = cartTotals();
+
+    if (countEl) {
+        countEl.textContent = totals.qty;
+        countEl.hidden = totals.qty === 0;
+    }
+    document.querySelector('[data-open-cart]')?.setAttribute('aria-label', 'Открыть корзину, товаров: ' + totals.qty);
+    if (headCountEl) headCountEl.textContent = totals.qty;
+    if (totalEl) totalEl.textContent = formatPrice(totals.sum);
+
+    if (shipFill) {
+        const percent = Math.min(100, (totals.sum / FREE_SHIPPING) * 100);
+        shipFill.style.width = percent + '%';
+    }
+    if (shipText) {
+        if (totals.qty === 0) {
+            shipText.innerHTML = 'Бесплатная доставка от <strong>' + formatPrice(FREE_SHIPPING) + '</strong>';
+        } else if (totals.sum >= FREE_SHIPPING) {
+            shipText.innerHTML = 'Бесплатная доставка <strong>активна</strong>';
+        } else {
+            shipText.innerHTML = 'До бесплатной доставки: <strong>' + formatPrice(FREE_SHIPPING - totals.sum) + '</strong>';
+        }
+    }
+
+    if (cart.length === 0) {
+        itemsEl.innerHTML = `
+            <div class="cart-empty">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 7h12l-1 13H7L6 7Z"></path>
+                    <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
+                </svg>
+                <div>
+                    <strong>Пока пусто</strong>
+                    Добавь что-нибудь из коллекции — и оно появится здесь.
+                </div>
+                <a class="btn btn-ghost btn--sm" href="catalog.html"><span>Перейти в каталог</span></a>
+            </div>`;
+        return;
+    }
+
+    itemsEl.innerHTML = cart.map((item) => {
+        const product = getProduct(item.id);
+        const name = escapeHtml(item.name || (product ? product.name : 'Товар'));
+        const image = item.img || (product ? product.img : '');
+        const key = escapeHtml(item.key);
+        const href = product ? 'product.html?id=' + product.id : 'catalog.html';
+        return `
+            <div class="cart-item">
+                <a href="${href}" aria-label="${name}">
+                    <img class="cart-thumb" src="${image}" alt="${name}">
+                </a>
+                <div class="cart-item-main">
+                    <a class="cart-item-name" href="${href}">${name}</a>
+                    <div class="cart-item-meta">Размер: ${escapeHtml(item.size || 'M')}</div>
+                    <div class="cart-qty" role="group" aria-label="Количество">
+                        <button type="button" data-qty="-1" data-key="${key}" aria-label="Уменьшить количество">−</button>
+                        <span>${item.qty}</span>
+                        <button type="button" data-qty="1" data-key="${key}" aria-label="Увеличить количество">+</button>
+                    </div>
+                </div>
+                <div class="cart-item-side">
+                    <span class="cart-item-price">${formatPrice(item.price * item.qty)}</span>
+                    <button type="button" class="cart-remove" data-remove="${key}" aria-label="Удалить товар">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function addToCart(id, size = 'M', qty = 1) {
+    const product = getProduct(id);
+    if (!product) return;
+
+    const key = product.id + '|' + size;
+    const existing = cart.find((item) => item.key === key);
+
+    if (existing) {
+        existing.qty += qty;
+    } else {
+        cart.push({
+            key,
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            img: product.img,
+            size,
+            qty
+        });
+    }
+
+    saveCart();
+    renderCart();
+    openCart();
+    showToast('Добавлено в корзину: ' + product.name + ' · ' + size, 'success');
+}
+
+function changeQty(key, delta) {
+    const index = cart.findIndex((item) => item.key === key);
+    if (index === -1) return;
+
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) cart.splice(index, 1);
+
+    if (cart.length === 0) {
+        saveCart();
+        renderCart();
+        return;
+    }
+    saveCart();
+    renderCart();
+}
+
+function removeItem(key) {
+    cart = cart.filter((item) => item.key !== key);
+    saveCart();
+    renderCart();
+    showToast('Товар удалён из корзины', 'info');
+}
+
+function openCart() {
+    const overlay = document.getElementById('cartOverlay');
+    const sidebar = document.getElementById('cartSidebar');
+    if (!overlay || !sidebar) return;
+    overlay.classList.add('active');
+    sidebar.classList.add('active');
+    document.body.classList.add('cart-open');
+    syncScrollLock();
+}
+
+function closeCart() {
+    document.getElementById('cartOverlay')?.classList.remove('active');
+    document.getElementById('cartSidebar')?.classList.remove('active');
+    document.body.classList.remove('cart-open');
+    syncScrollLock();
+}
+
+/* ------------------------------------------------------------
+   overlays / scroll lock
+   ------------------------------------------------------------ */
+
+function syncScrollLock() {
+    const hasOpen = document.querySelector('.cart-sidebar.active, .modal.active, .mobile-menu.active');
+    document.body.classList.toggle('no-scroll', Boolean(hasOpen));
+}
+
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add('active');
+    syncScrollLock();
+}
+
+function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('active');
+    syncScrollLock();
+}
+
+function closeAllOverlays() {
+    closeCart();
+    document.querySelectorAll('.modal.active').forEach((modal) => modal.classList.remove('active'));
+    document.getElementById('mobileMenu')?.classList.remove('active');
+    document.querySelector('.burger')?.setAttribute('aria-expanded', 'false');
+    syncScrollLock();
+}
+
+function toggleMobileMenu(force) {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.querySelector('.burger');
+    if (!menu) return;
+
+    const next = typeof force === 'boolean' ? force : !menu.classList.contains('active');
+    menu.classList.toggle('active', next);
+    burger?.setAttribute('aria-expanded', String(next));
+    syncScrollLock();
+}
+
+/* ------------------------------------------------------------
+   product card markup
+   ------------------------------------------------------------ */
+
+function productCardHTML(product, options = {}) {
+    const sizes = ['S', 'M', 'L', 'XL'];
+    const activeSize = options.size || 'M';
+    const category = product.catLabel || '';
+    const oldPrice = product.oldPrice
+        ? '<span class="price price--old">' + formatPrice(product.oldPrice) + '</span>'
+        : '';
+
+    return `
+        <article class="product-card" data-card data-id="${product.id}" data-cat="${product.cat}">
+            <div class="card-media">
+                <a class="media-link" href="product.html?id=${product.id}" aria-label="${escapeHtml(product.name)}">
+                    <img class="img-front" src="${product.images[0].src}" alt="${escapeHtml(product.name)} — вид спереди">
+                    <img class="img-back" src="${product.images[1].src}" alt="${escapeHtml(product.name)} — вид сзади">
+                </a>
+                <span class="card-badge">${escapeHtml(product.badge || 'LIMITED')}</span>
+                <span class="card-index">${pad2(product.id)}</span>
+                <div class="view-toggle">
+                    <button type="button" class="active" data-side="front">Front</button>
+                    <button type="button" data-side="back">Back</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <span>${escapeHtml(category)}</span>
+                    <span>${escapeHtml(product.color || '')}</span>
+                </div>
+                <h3 class="card-title"><a href="product.html?id=${product.id}">${escapeHtml(product.name)}</a></h3>
+                <div class="card-price-row">
+                    <span class="price">${formatPrice(product.price)}</span>
+                    ${oldPrice}
+                </div>
+                <div class="size-row" role="group" aria-label="Размер">
+                    <span class="size-label">Размер</span>
+                    ${sizes.map((size) => `<button type="button" class="size-chip${size === activeSize ? ' active' : ''}" data-size="${size}">${size}</button>`).join('')}
+                </div>
+                <div class="card-buttons">
+                    <a class="btn btn-ghost btn--sm" href="product.html?id=${product.id}"><span>Подробнее</span></a>
+                    <button type="button" class="btn btn-primary btn--sm" data-add="${product.id}"><span>В корзину</span></button>
+                </div>
+            </div>
+        </article>`;
+}
+
+/* ------------------------------------------------------------
+   catalog filters
+   ------------------------------------------------------------ */
+
+function initCatalogFilters() {
+    const bar = document.querySelector('.catalog-filters');
+    const grid = document.getElementById('catalogGrid');
+    const count = document.getElementById('catalogVisibleCount');
+    if (!bar || !grid) return;
+
+    bar.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-filter]');
+        if (!button) return;
+
+        const filter = button.dataset.filter;
+        bar.querySelectorAll('[data-filter]').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+
+        let visible = 0;
+        grid.querySelectorAll('[data-card]').forEach((card) => {
+            const show = filter === 'all' || card.dataset.cat === filter;
+            card.hidden = !show;
+            card.classList.remove('filter-in');
+            if (show) {
+                visible += 1;
+                void card.offsetWidth;
+                card.classList.add('filter-in');
+            }
+        });
+
+        if (count) count.textContent = pad2(visible);
+    });
+}
+
+/* ------------------------------------------------------------
+   product detail page
+   ------------------------------------------------------------ */
+
+function initProductPage() {
+    const detail = document.getElementById('productDetail');
+    if (!detail) return;
+
+    const params = new URLSearchParams(window.location.search);
+    let id = parseInt(params.get('id'), 10);
+    if (!id || !getProduct(id)) id = 1;
+
+    const product = getProduct(id);
+    const sizes = ['S', 'M', 'L', 'XL'];
+    const activeSize = 'M';
+
+    detail.dataset.id = product.id;
+    detail.dataset.card = '';
+
+    document.title = product.name + ' — Влюблённый Дьявол';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.setAttribute('content', product.desc);
+
+    const setText = (selector, value) => {
+        const element = document.querySelector(selector);
+        if (element) element.textContent = value;
+    };
+
+    setText('#productBreadcrumbName', product.name);
+    setText('#productKicker', 'DROP 001 / ' + product.catLabel);
+    setText('#productTitle', product.name);
+    setText('#productPrice', formatPrice(product.price));
+    setText('#productDesc', product.desc);
+    setText('#productStock', 'В наличии · ' + product.stock + ' шт.');
+
+    const oldPrice = document.getElementById('productOldPrice');
+    if (oldPrice) {
+        if (product.oldPrice) {
+            oldPrice.textContent = formatPrice(product.oldPrice);
+            oldPrice.hidden = false;
+        } else {
+            oldPrice.hidden = true;
+        }
+    }
+
+    const meta = document.getElementById('productMeta');
+    if (meta) {
+        meta.innerHTML = [
+            product.color,
+            product.fabric,
+            'Оверсайз / unisex'
+        ].map((item) => `<span class="meta-pill">${escapeHtml(item)}</span>`).join('');
+    }
+
+    const sizesEl = document.getElementById('productSizes');
+    if (sizesEl) {
+        sizesEl.innerHTML = sizes.map((size) =>
+            `<button type="button" class="size-option${size === activeSize ? ' active' : ''}" data-size="${size}">${size}</button>`
+        ).join('');
+    }
+
+    const addBtn = document.getElementById('productAdd');
+    if (addBtn) addBtn.dataset.add = product.id;
+
+    const thumbsEl = document.getElementById('galleryThumbs');
+    const mainImg = document.getElementById('galleryMainImg');
+    const label = document.getElementById('galleryLabel');
+    const counter = document.getElementById('galleryCounter');
+
+    if (thumbsEl) {
+        thumbsEl.innerHTML = product.images.map((image, index) => `
+            <button type="button" class="gallery-thumb${index === 0 ? ' active' : ''}" data-gallery-thumb data-index="${index}" aria-label="${escapeHtml(image.label)}">
+                <img src="${image.src}" alt="${escapeHtml(product.name)} — ${escapeHtml(image.label)}">
+            </button>`).join('');
+    }
+
+    if (mainImg) {
+        mainImg.src = product.images[0].src;
+        mainImg.alt = product.name + ' — ' + product.images[0].label;
+    }
+    if (label) label.textContent = product.images[0].label;
+    if (counter) counter.textContent = '1 / ' + product.images.length;
+
+    const accDesc = document.getElementById('accDesc');
+    if (accDesc) {
+        accDesc.innerHTML = `
+            <p>${escapeHtml(product.desc)}</p>
+            <ul>
+                <li>${escapeHtml(product.fit)}</li>
+                <li>Плотная ткань держит форму после стирки.</li>
+                <li>Унисекс-крой, размеры S–XL.</li>
+            </ul>`;
+    }
+
+    const accComposition = document.getElementById('accComposition');
+    if (accComposition) {
+        accComposition.innerHTML = `
+            <p>${escapeHtml(product.composition)}</p>
+            <ul>
+                <li>Собственное производство, малый тираж.</li>
+                <li>Каждая вещь проверяется вручную перед отправкой.</li>
+            </ul>`;
+    }
+
+    const accCare = document.getElementById('accCare');
+    if (accCare) {
+        accCare.innerHTML = `
+            <p>${escapeHtml(product.care)}</p>
+            <ul>
+                <li>Стирать наизнанку при 30°.</li>
+                <li>Не использовать отбеливатель и агрессивные средства.</li>
+                <li>Сушить в расправленном виде, вдали от прямых лучей.</li>
+            </ul>`;
+    }
+
+    const related = document.getElementById('relatedGrid');
+    if (related) {
+        related.innerHTML = Object.values(PRODUCTS)
+            .filter((item) => item.id !== product.id)
+            .slice(0, 3)
+            .map((item) => productCardHTML(item))
+            .join('');
+    }
+
+    document.querySelectorAll('.related-section .reveal').forEach((element) => {
+        element.classList.add('visible');
+    });
+}
+
+/* ------------------------------------------------------------
+   countdown / waitlist
+   ------------------------------------------------------------ */
+
+function initCountdown() {
+    const root = document.getElementById('countdown');
+    if (!root) return;
+
+    const target = new Date('2026-12-12T19:00:00+03:00').getTime();
+
+    const tick = () => {
+        const diff = Math.max(0, target - Date.now());
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        const set = (id, value) => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = pad2(value);
+        };
+        set('cdDays', days);
+        set('cdHours', hours);
+        set('cdMinutes', minutes);
+        set('cdSeconds', seconds);
+    };
+
+    tick();
+    setInterval(tick, 1000);
+}
+
+function initWaitlist() {
+    const form = document.getElementById('waitlistForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const input = document.getElementById('waitlistInput');
+        const value = input ? input.value.trim() : '';
+        if (!value) return;
+
+        const list = readStorage(WAITLIST_KEY, []);
+        if (!Array.isArray(list)) list = [];
+        if (!list.includes(value)) {
+            list.push(value);
+            writeStorage(WAITLIST_KEY, list);
+        }
+
+        form.reset();
+        showToast('Контакт сохранён. Анонс дропа — в Telegram-канале.', 'success');
+    });
+}
+
+/* ------------------------------------------------------------
+   checkout
+   ------------------------------------------------------------ */
+
+function checkout() {
+    if (cart.length === 0) {
+        showToast('Корзина пуста — добавьте товар', 'error');
+        return;
+    }
+    closeCart();
+    resetCheckout();
+    renderCheckoutSummary();
+    openModal('checkoutModal');
+}
+
+function resetCheckout() {
+    const wrap = document.getElementById('checkoutFormWrap');
+    const success = document.getElementById('checkoutSuccess');
+    const form = document.getElementById('checkoutForm');
+    if (wrap) wrap.hidden = false;
+    if (success) success.hidden = true;
+    if (form) form.reset();
+}
+
+function renderCheckoutSummary() {
+    const summary = document.getElementById('checkoutSummary');
+    if (!summary) return;
+
+    const totals = cartTotals();
+    summary.innerHTML = cart.map((item) => `
+        <div class="sum-line">
+            <span>${escapeHtml(item.name)} · ${escapeHtml(item.size)} × ${item.qty}</span>
+            <strong>${formatPrice(item.price * item.qty)}</strong>
+        </div>`).join('') + `
+        <div class="sum-total"><span>Итого</span><strong>${formatPrice(totals.sum)}</strong></div>`;
+}
+
+function closeCheckout() {
+    closeModal(document.getElementById('checkoutModal'));
+}
+
+function handleCheckoutSubmit(event) {
+    event.preventDefault();
+
+    if (cart.length === 0) {
+        showToast('Корзина пуста — добавьте товар', 'error');
+        return;
+    }
+
+    const name = document.getElementById('custName')?.value.trim() || '';
+    const phone = document.getElementById('custPhone')?.value.trim() || '';
+    const telegram = document.getElementById('custTg')?.value.trim() || '';
+    const city = document.getElementById('custCity')?.value.trim() || '';
+    const delivery = document.getElementById('custDelivery')?.value || '';
+    const comment = document.getElementById('custComment')?.value.trim() || '';
+    const payment = document.querySelector('input[name="payment"]:checked')?.value || 'Не выбран';
+
+    const orderNumber = 'DD-' + String(Date.now()).slice(-6);
+    const totals = cartTotals();
+
+    const itemsText = cart.map((item) =>
+        '• ' + item.name + ' — ' + item.size + ' × ' + item.qty + ' = ' + formatPrice(item.price * item.qty)
+    ).join('\n');
+
+    lastOrderText =
+        'ВЛЮБЛЁННЫЙ ДЬЯВОЛ — заказ ' + orderNumber + '\n\n' +
+        'Товары:\n' + itemsText + '\n\n' +
+        'Итого: ' + formatPrice(totals.sum) + '\n' +
+        'Оплата: ' + payment + '\n' +
+        'Доставка: ' + delivery + (city ? ', ' + city : '') + '\n\n' +
+        'Имя: ' + name + '\n' +
+        'Телефон: ' + phone + '\n' +
+        'Telegram: ' + telegram +
+        (comment ? '\nКомментарий: ' + comment : '');
+
+    const orders = readStorage(ORDERS_KEY, []);
+    const safeOrders = Array.isArray(orders) ? orders : [];
+    safeOrders.unshift({
+        number: orderNumber,
+        createdAt: new Date().toISOString(),
+        name,
+        phone,
+        telegram,
+        city,
+        delivery,
+        payment,
+        comment,
+        items: cart.map((item) => ({ name: item.name, size: item.size, qty: item.qty, price: item.price })),
+        total: totals.sum
+    });
+    writeStorage(ORDERS_KEY, safeOrders.slice(0, 30));
+
+    document.getElementById('orderNumber').textContent = orderNumber;
+    document.getElementById('checkoutFormWrap').hidden = true;
+    document.getElementById('checkoutSuccess').hidden = false;
+    const checkoutPanel = document.querySelector('#checkoutModal .modal-panel');
+    if (checkoutPanel) checkoutPanel.scrollTop = 0;
+
+    cart = [];
+    saveCart();
+    renderCart();
+    showToast('Заказ ' + orderNumber + ' оформлен', 'success');
+}
+
+async function copyText(value) {
+    try {
+        await navigator.clipboard.writeText(value);
+        return true;
+    } catch (error) {
+        const area = document.createElement('textarea');
+        area.value = value;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        let ok = false;
+        try {
+            ok = document.execCommand('copy');
+        } catch (copyError) {
+            ok = false;
+        }
+        area.remove();
+        return ok;
+    }
+}
+
+/* ------------------------------------------------------------
+   global UI behaviour
+   ------------------------------------------------------------ */
+
+function initHeader() {
+    const page = document.body.dataset.page;
+    document.querySelectorAll('[data-nav]').forEach((link) => {
+        if (link.dataset.nav === page) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
+    });
+
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+        header?.classList.toggle('scrolled', window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    document.querySelector('.burger')?.addEventListener('click', () => toggleMobileMenu());
+    document.querySelectorAll('[data-close-menu]').forEach((button) => {
+        button.addEventListener('click', () => toggleMobileMenu(false));
+    });
+    document.querySelectorAll('.mobile-menu a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+    });
+    document.querySelectorAll('[data-open-size]').forEach((button) => {
+        button.addEventListener('click', () => openModal('sizeModal'));
+    });
+    document.querySelectorAll('[data-close-size]').forEach((button) => {
+        button.addEventListener('click', () => closeModal(document.getElementById('sizeModal')));
+    });
+    document.querySelectorAll('[data-open-checkout]').forEach((button) => {
+        button.addEventListener('click', checkout);
+    });
+    document.querySelectorAll('[data-close-checkout]').forEach((button) => {
+        button.addEventListener('click', closeCheckout);
+    });
+    document.getElementById('checkoutForm')?.addEventListener('submit', handleCheckoutSubmit);
+
+    document.querySelectorAll('.modal').forEach((modal) => {
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) closeModal(modal);
+        });
+    });
+
+    document.getElementById('cartOverlay')?.addEventListener('click', closeCart);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeAllOverlays();
+    });
+}
+
+function initReveal() {
+    const elements = Array.from(document.querySelectorAll('.reveal'));
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        elements.forEach((element) => element.classList.add('visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    elements.forEach((element) => observer.observe(element));
+}
+
+function initGlobalClicks() {
+    document.addEventListener('click', (event) => {
+        /* open cart */
+        if (event.target.closest('[data-open-cart]')) {
+            openCart();
+            return;
+        }
+
+        /* close cart */
+        if (event.target.closest('[data-close-cart]')) {
+            closeCart();
+            return;
+        }
+
+        /* quantity inside cart */
+        const qtyButton = event.target.closest('[data-qty]');
+        if (qtyButton) {
+            const delta = parseInt(qtyButton.dataset.qty, 10);
+            changeQty(qtyButton.dataset.key, delta);
+            return;
+        }
+
+        /* remove item */
+        const removeButton = event.target.closest('[data-remove]');
+        if (removeButton) {
+            removeItem(removeButton.dataset.remove);
+            return;
+        }
+
+        /* size chips */
+        const sizeButton = event.target.closest('.size-chip, .size-option');
+        if (sizeButton) {
+            const group = sizeButton.parentElement;
+            group.querySelectorAll('.size-chip, .size-option').forEach((button) => button.classList.remove('active'));
+            sizeButton.classList.add('active');
+            return;
+        }
+
+        /* front / back toggle */
+        const sideButton = event.target.closest('[data-side]');
+        if (sideButton) {
+            const card = sideButton.closest('.product-card, .soon-card');
+            if (card) {
+                const isBack = sideButton.dataset.side === 'back';
+                card.classList.toggle('show-back', isBack);
+                card.querySelectorAll('[data-side]').forEach((button) => {
+                    button.classList.toggle('active', button === sideButton);
+                });
+            }
+            return;
+        }
+
+        /* gallery thumbnails */
+        const thumb = event.target.closest('[data-gallery-thumb]');
+        if (thumb) {
+            const index = parseInt(thumb.dataset.index, 10);
+            const product = getProduct(document.getElementById('productDetail')?.dataset.id || 1);
+            if (!product || !product.images[index]) return;
+
+            document.querySelectorAll('.gallery-thumb').forEach((button) => button.classList.remove('active'));
+            thumb.classList.add('active');
+
+            const image = product.images[index];
+            const main = document.getElementById('galleryMainImg');
+            const label = document.getElementById('galleryLabel');
+            const counter = document.getElementById('galleryCounter');
+            if (main) {
+                main.src = image.src;
+                main.alt = product.name + ' — ' + image.label;
+            }
+            if (label) label.textContent = image.label;
+            if (counter) counter.textContent = (index + 1) + ' / ' + product.images.length;
+            return;
+        }
+
+        /* add to cart */
+        const addButton = event.target.closest('[data-add]');
+        if (addButton) {
+            const card = addButton.closest('[data-card]');
+            const size = card?.querySelector('.size-option.active, .size-chip.active')?.dataset.size || 'M';
+            let qty = 1;
+
+            if (addButton.closest('#productDetail')) {
+                qty = productQty;
+                productQty = 1;
+                const qtyValue = document.getElementById('productQtyVal');
+                if (qtyValue) qtyValue.textContent = '1';
+            }
+
+            addToCart(addButton.dataset.add, size, qty);
+            return;
+        }
+
+        /* product page quantity */
+        const productQtyButton = event.target.closest('[data-product-qty]');
+        if (productQtyButton) {
+            productQty = Math.max(1, Math.min(9, productQty + parseInt(productQtyButton.dataset.productQty, 10)));
+            const qtyValue = document.getElementById('productQtyVal');
+            if (qtyValue) qtyValue.textContent = productQty;
+            return;
+        }
+
+        /* waitlist scroll */
+        if (event.target.closest('[data-waitlist]')) {
+            const section = document.getElementById('waitlist') || document.getElementById('waitlistForm');
+            section?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => document.getElementById('waitlistInput')?.focus(), 500);
+            return;
+        }
+
+        /* copy order */
+        if (event.target.closest('[data-copy-order]')) {
+            copyText(lastOrderText).then((ok) => {
+                showToast(ok ? 'Текст заказа скопирован' : 'Не удалось скопировать. Выделите текст вручную.', ok ? 'success' : 'error');
+            });
+            return;
+        }
+    });
+}
+
+/* ------------------------------------------------------------
+   boot
+   ------------------------------------------------------------ */
+
+function boot() {
+    renderCart();
+    initHeader();
+    initGlobalClicks();
+    initReveal();
+    initCatalogFilters();
+    initProductPage();
+    initCountdown();
+    initWaitlist();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+} else {
+    boot();
+}
+
+</script>
+</body>
+</html>
