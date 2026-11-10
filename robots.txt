@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yazychok.github.io/sitemap.xml
